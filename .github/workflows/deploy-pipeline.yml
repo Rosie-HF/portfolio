@@ -7,8 +7,8 @@ on:
     types: [content-updated]
 
 env:
-  BASE_URL: ${{ vars.PUBLIC_BASE_URL }}
-  SITE_URL: ${{ vars.PUBLIC_SITE_URL }}
+  BASE_URL: portfolio
+  SITE_URL: https://rosie-hf.github.io
 
 jobs:
   # ESLint + Prettier
