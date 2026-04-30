@@ -49,10 +49,8 @@ const t = useTranslations(Astro.currentLocale as LanguageKey);
       navigator.clipboard.writeText(e.target.dataset.mailBtn);
 
       function showPopover(targetElement) {
-        targetElement.disabled = true;
         const popover = document.createElement('div');
         popover.textContent = popoverText;
-        targetElement.appendChild(popover);
         popover.style.position = 'absolute';
         popover.style.fontSize = '1rem';
         popover.style.letterSpacing = '0.05rem';
@@ -60,9 +58,12 @@ const t = useTranslations(Astro.currentLocale as LanguageKey);
         popover.style.left = '50%';
         popover.style.transform = 'translate(-50%, 0%)';
 
+        targetElement.setAttribute('disabled', 'true');
+        targetElement.appendChild(popover);
+
         setTimeout(() => {
           targetElement.removeChild(popover);
-          targetElement.disabled = false;
+          targetElement.removeAttribute('disabled');
         }, 1000);
       }
 

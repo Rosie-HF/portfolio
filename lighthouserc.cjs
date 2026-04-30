@@ -1,15 +1,17 @@
-const base = process.env.BASE_URL || '';
+const base = process.env.BASE_URL
+  ? `/${process.env.BASE_URL}`.replace(/\/{2,}/g, '/').replace(/\/$/, '')
+  : '';
 
 module.exports = {
   ci: {
     collect: {
       numberOfRuns: 1,
-      startServerCommand: 'pnpm astro preview',
+      startServerCommand: 'pnpm preview --host 127.0.0.1 --port 4321',
       url: [
-        `http://localhost:4321${base}/en/`,
-        `http://localhost:4321${base}/en/resume/`,
-        `http://localhost:4321${base}/en/work/`,
-        `http://localhost:4321${base}/en/faq/`,
+        `http://127.0.0.1:4321${base}/zh-cn/`,
+        `http://127.0.0.1:4321${base}/zh-cn/resume/`,
+        `http://127.0.0.1:4321${base}/zh-cn/work/`,
+        `http://127.0.0.1:4321${base}/zh-cn/faq/`,
       ].map((url) => url.replace(/([^:])\/\//g, '$1/')),
     },
     upload: {
