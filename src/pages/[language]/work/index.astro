@@ -80,7 +80,7 @@ export function getStaticPaths() {
 
     function updateTechList() {
       filterElement?.querySelectorAll('button[data-tech-id]').forEach((button) => {
-        const techId = button.dataset.techId;
+        const { techId } = button.dataset;
         if (techId && activedTechs.includes(techId)) {
           button.classList.add('active');
         } else {
@@ -89,7 +89,7 @@ export function getStaticPaths() {
       });
 
       groupFilterElement?.querySelectorAll('button').forEach((button) => {
-        const techId = button.dataset.groupId;
+        const { groupId: techId } = button.dataset;
         const relatedTechs = techGroups.find((group) => group.id === techId)?.relatedTechs || [];
         const isActive = relatedTechs.every((tech) => activedTechs.includes(tech)) && relatedTechs.length > 0;
         if (isActive) {
