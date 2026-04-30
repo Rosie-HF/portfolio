@@ -22,12 +22,12 @@ describe('changeLanguage', () => {
   it('should keep the zh-cn prefix for locale routes', () => {
     const path = '/zh-cn/about';
     const newPath = changeLanguage('zh-cn', path);
-    expect(newPath).toBe('/zh-cn/about');
+    expect(newPath).toBe('/zh-cn/about/');
   });
 
   it('should add the locale prefix when the path does not contain one', () => {
     const path = '/about';
     const newPath = changeLanguage('zh-cn', path, true);
-    expect(newPath).toBe('/zh-cn/about');
+    expect(newPath).toBe('/zh-cn/about/');
   });
 });

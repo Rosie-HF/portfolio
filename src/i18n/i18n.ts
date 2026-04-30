@@ -1,4 +1,5 @@
 import zhCnTranslation from './zh-cn.json';
+import { normalizeBaseUrl } from '../utils/paths.ts';
 
 export const languages = {
   'zh-cn': '简体中文',
@@ -37,19 +38,26 @@ export function useTranslations(targetLanguage?: LanguageKey) {
 }
 
 function removeLanguagePrefix(path: string, languagePrefixes: string[]): string {
-  const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL.replace(/\/$/, '');
+  const base = normalizeBaseUrl();
   const pathWithoutBase = path.startsWith(base) ? path.slice(base.length) : path;
   const prefixRegex = new RegExp(`^/(${languagePrefixes.join('|')})`);
   return pathWithoutBase.replace(prefixRegex, '').replace(/^\/+/, '');
 }
 
-function constructNewPath(targetLocale: LanguageKey, path: string, isDefaultLocalePrefixed: boolean): string {
-  const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL.replace(/\/$/, '');
+export function getLocalePath(targetLocale: LanguageKey, path = '/') {
+  const base = normalizeBaseUrl();
   const cleanPath = path.replace(/^\/+/, '').replace(/\/+$/, '');
-  if (!isDefaultLocalePrefixed && targetLocale === defaultLocale) {
-    return cleanPath ? `${base}/${cleanPath}` : `${base}/`;
+  const segments = [base.replace(/^\/+/, '')];
+
+  if (prefixDefaultLocale || targetLocale !== defaultLocale) {
+    segments.push(targetLocale);
   }
-  return cleanPath ? `${base}/${targetLocale}/${cleanPath}` : `${base}/${targetLocale}`;
+
+  if (cleanPath) {
+    segments.push(cleanPath);
+  }
+
+  return `/${segments.filter(Boolean).join('/')}/`.replace(/\/{2,}/g, '/');
 }
 
 export function changeLanguage(
@@ -57,7 +65,19 @@ export function changeLanguage(
   path: string,
   isDefaultLocalePrefixed = prefixDefaultLocale,
 ): string {
+  if (!isDefaultLocalePrefixed && targetLocale === defaultLocale) {
+    const base = normalizeBaseUrl();
+    const cleanedPath = removeLanguagePrefix(path, Object.keys(languages)).replace(/\/+$/, '');
+    const segments = [base.replace(/^\/+/, '')];
+
+    if (cleanedPath) {
+      segments.push(cleanedPath);
+    }
+
+    return `/${segments.filter(Boolean).join('/')}/`.replace(/\/{2,}/g, '/');
+  }
+
   const languagePrefixes = Object.keys(languages);
   const cleanedPath = removeLanguagePrefix(path, languagePrefixes);
-  return constructNewPath(targetLocale, cleanedPath, isDefaultLocalePrefixed);
+  return getLocalePath(targetLocale, cleanedPath);
 }

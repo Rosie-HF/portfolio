@@ -1,8 +1,8 @@
 ---
 import LanguagePicker from '@/components/LanguagePicker.astro';
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import { defaultLocale, useTranslations, prefixDefaultLocale, type LanguageKey } from '@/i18n/i18n.ts';
+import { defaultLocale, useTranslations, prefixDefaultLocale, getLocalePath, type LanguageKey } from '@/i18n/i18n.ts';
 import { getEntry } from 'astro:content';
+import { normalizeBaseUrl } from '@/utils/paths.ts';
 
 const t = useTranslations(Astro.currentLocale as LanguageKey);
 const config = await getEntry('config', 'site');
@@ -16,7 +16,7 @@ const links = [
 ];
 
 function isActiveNavItem(navItem: string) {
-  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  const base = normalizeBaseUrl();
   const { pathname } = new URL(Astro.url);
   const pathWithoutBase = base && pathname.startsWith(base) ? pathname.slice(base.length) : pathname;
   const currentPath = pathWithoutBase.replace(/^\/|\/$/g, '');
@@ -34,7 +34,7 @@ function isActiveNavItem(navItem: string) {
 ---
 
 <nav style="height: var(--navbar-height)" class="px-4 flex flex-col md:flex-row flex-wrap justify-center z-50 relative md:justify-between items-center container mx-auto print:hidden">
-  <a class="hover:bg-primary-100 px-5 py-3 -m-2 rounded-full transition-colors flex items-center gap-3" href={getRelativeLocaleUrl(Astro.currentLocale || defaultLocale, '/')}>
+  <a class="hover:bg-primary-100 px-5 py-3 -m-2 rounded-full transition-colors flex items-center gap-3" href={getLocalePath(Astro.currentLocale as LanguageKey || defaultLocale, '/')}>
     <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary-900 text-primary-50 font-semibold">
       何
     </span>
@@ -59,7 +59,7 @@ function isActiveNavItem(navItem: string) {
                   class={`md:px-8 px-4 py-4 rounded-full transition-colors whitespace-nowrap relative z-10 block ${
                     active ? 'text-primary-50' : 'text-primary-900 hover:bg-primary-100'
                   }`}
-                  href={getRelativeLocaleUrl(Astro.currentLocale || defaultLocale, url)}
+                  href={getLocalePath(Astro.currentLocale as LanguageKey || defaultLocale, url)}
                 >
                   {name}
                 </a>

@@ -1,7 +1,6 @@
 ---
 import { getEntry } from 'astro:content';
-import { defaultLocale, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
-import { getRelativeLocaleUrl } from 'astro:i18n';
+import { defaultLocale, useTranslations, getLocalePath, type LanguageKey } from '@/i18n/i18n.ts';
 import DOMPurify from 'isomorphic-dompurify';
 
 const config = await getEntry('config', 'site');
@@ -15,7 +14,7 @@ const t = useTranslations(Astro.currentLocale as LanguageKey);
       <span class="font-bold">{t('Footer-1')}</span>
       <span class="text-primary-700">
         <br />
-        {t('Footer-2')} <button class="cursor-pointer highlight" data-mail-btn={website.email}>Email</button> {t('Footer-3')} <a class="highlight" href={getRelativeLocaleUrl(Astro.currentLocale || defaultLocale, '/resume')}>{t('Footer-4')}</a> {t('Footer-5')}
+        {t('Footer-2')} <button class="cursor-pointer highlight" data-mail-btn={website.email}>Email</button> {t('Footer-3')} <a class="highlight" href={getLocalePath(Astro.currentLocale as LanguageKey || defaultLocale, '/resume')}>{t('Footer-4')}</a> {t('Footer-5')}
       </span>
     </h2>
 
