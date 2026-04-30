@@ -36,11 +36,11 @@ function isActiveNavItem(navItem: string) {
 <nav style="height: var(--navbar-height)" class="px-4 flex flex-col md:flex-row flex-wrap justify-center z-50 relative md:justify-between items-center container mx-auto print:hidden">
   <a class="hover:bg-primary-100 px-5 py-3 -m-2 rounded-full transition-colors flex items-center gap-3" href={getLocalePath(Astro.currentLocale as LanguageKey || defaultLocale, '/')}>
     <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary-900 text-primary-50 font-semibold">
-      何
+      {website.username.slice(0, 1)}
     </span>
     <span class="hidden sm:flex flex-col leading-tight">
       <span class="font-semibold">{website.username}</span>
-      <span class="text-sm text-primary-600">Medical Product Portfolio</span>
+      <span class="text-sm text-primary-600">{t('Navbar-Subtitle')}</span>
     </span>
   </a>
 

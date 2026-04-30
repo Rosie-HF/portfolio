@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { Icon } from 'astro-icon/components';
-import { useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
+import { languageTags, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
 import DOMPurify from 'isomorphic-dompurify';
 
 interface Props {
@@ -9,9 +9,10 @@ interface Props {
 }
 
 const { resume } = Astro.props;
-const t = useTranslations(Astro.currentLocale as LanguageKey);
+const currentLocale = Astro.currentLocale as LanguageKey;
+const t = useTranslations(currentLocale);
 const currentTime = new Date()
-  .toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' })
+  .toLocaleDateString(languageTags[currentLocale], { year: 'numeric', month: '2-digit', day: '2-digit' })
   .replace(/\//g, '-');
 
 type Achievement = string | Achievement[];
@@ -72,7 +73,7 @@ function renderAchievements(list: Achievement): string {
             <ul class="font-serif list-disc list-outside ml-5 text-xs space-y-1 text-gray-800" set:html={DOMPurify.sanitize(renderAchievements(experience.achievements))}></ul>
             {experience.techs.length > 0 && (
               <div class="text-xs text-gray-600 mt-1.5">
-                <span class="font-semibold text-gray-700">Tech:</span>
+                <span class="font-semibold text-gray-700">{t('Resume-TechLabel')}:</span>
                 {' '}
                 {experience.techs.join(', ')}
               </div>

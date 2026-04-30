@@ -6,6 +6,17 @@ import DOMPurify from 'isomorphic-dompurify';
 const config = await getEntry('config', 'site');
 const { website } = config!.data;
 const t = useTranslations(Astro.currentLocale as LanguageKey);
+const copyrightHtml = t('Footer-Copyright', {
+  year: `${new Date().getFullYear()}`,
+  name: website.name,
+  themeLink: `<a class="underline" href="https://github.com/riceball-tw/letter">Letter</a>`,
+});
+
+function getSocialLabel(name: string, url: string) {
+  if (url.startsWith('mailto:')) return t('Contact-Email');
+  if (url.startsWith('tel:')) return t('Contact-Phone');
+  return name;
+}
 ---
 
 <footer class="print:hidden container mx-auto px-4 py-8">
@@ -14,7 +25,7 @@ const t = useTranslations(Astro.currentLocale as LanguageKey);
       <span class="font-bold">{t('Footer-1')}</span>
       <span class="text-primary-700">
         <br />
-        {t('Footer-2')} <button class="cursor-pointer highlight" data-mail-btn={website.email}>Email</button> {t('Footer-3')} <a class="highlight" href={getLocalePath(Astro.currentLocale as LanguageKey || defaultLocale, '/resume')}>{t('Footer-4')}</a> {t('Footer-5')}
+        {t('Footer-2')} <button class="cursor-pointer highlight" data-mail-btn={website.email}>{t('Contact-Email')}</button> {t('Footer-3')} <a class="highlight" href={getLocalePath(Astro.currentLocale as LanguageKey || defaultLocale, '/resume')}>{t('Footer-4')}</a> {t('Footer-5')}
       </span>
     </h2>
 
@@ -25,7 +36,7 @@ const t = useTranslations(Astro.currentLocale as LanguageKey);
           website.socials.map((social) => (
             <li>
               <a class="hover:bg-primary-100 rounded-full transition-colors p-4 ml-0 lg:-ml-4 inline-block" href={social.url} target="_blank">
-                {social.name}
+                {getSocialLabel(social.name, social.url)}
               </a>
             </li>
           ))
@@ -34,8 +45,8 @@ const t = useTranslations(Astro.currentLocale as LanguageKey);
     </div>
   </div>
   <div class="flex justify-between gap-4">
-    <p class="opacity-80" set:html={DOMPurify.sanitize(website.copyright)} />
-    <span>{website.emojiStatus}</span>
+    <p class="opacity-80" set:html={DOMPurify.sanitize(copyrightHtml)} />
+    <span>{t('Website-Status')}</span>
   </div>
 </footer>
 

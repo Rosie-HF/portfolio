@@ -1,12 +1,15 @@
 import zhCnTranslation from './zh-cn.json';
+import enTranslation from './en.json';
 import { normalizeBaseUrl } from '../utils/paths.ts';
 
 export const languages = {
   'zh-cn': '简体中文',
+  en: 'English',
 } as const;
 
 export const languageTags = {
   'zh-cn': 'zh-Hans-CN',
+  en: 'en-US',
 } as const;
 
 export const regionTags = {} as const;
@@ -19,6 +22,7 @@ export type LanguageValue = (typeof languages)[LanguageKey];
 
 export const getTranslationFile = (targetLocale: LanguageKey) => {
   if (targetLocale === 'zh-cn') return zhCnTranslation;
+  if (targetLocale === 'en') return enTranslation;
   return zhCnTranslation;
 };
 

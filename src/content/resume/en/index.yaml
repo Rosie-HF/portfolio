@@ -1,0 +1,79 @@
+---
+personalInfo:
+  name: Fang He
+  role: Medical Health Product / Medical Content / Digital Therapeutics
+  description: M.S. in Psychology with a background in psychological research, neuroscience-related medical content design, product planning, and data analysis. Familiar with <span class="text-primary-900">ADHD, EEG and multi-parameter physiological signals, biofeedback, and the design of assessment and treatment workflows</span>, and able to connect medical logic, product requirements, and cross-functional collaboration to move core modules such as assessment, therapy, and reporting from planning into delivery.
+  socialLinks:
+    - name: Email
+      icon: simple-icons:microsoftoutlook
+      url: mailto:fanghe13@outlook.com
+    - name: Phone
+      icon: material-symbols:call-outline-rounded
+      url: tel:17745169759
+workExperience:
+  - title: Medical Content Design / Product Solution Support
+    company:
+      name: Medical Technology Company
+    time: 2025.07 - 2026.04
+    achievements:
+      - Conducted competitive analysis and end-to-end research on multi-parameter biofeedback workflows, organizing feedback mechanisms, indication directions, core metrics, calculation methods, and interaction logic to clarify the product definition and software framework for later design and engineering work.
+      - Led the design of the assessment, therapy, and reporting modules, structured ICD-11 and DSM-5 disease labels, defined multi-dimensional evaluation workflows and scoring standards, and delivered demos, standardized therapy plans, and four report templates to establish the core business loop.
+      - Defined core metrics and algorithm rules for multi-parameter biofeedback, including composite indicators, threshold calculation, real-time feedback scores, therapy outcome scores, data sources, display rules, input-output parameters, storage logic, and audio playback rules that engineering teams could implement directly.
+      - Led the design of gamified psychotherapy and EEG feedback content, delivering 10 EEG biofeedback game concepts, 8 psychotherapy guidance scripts, and 4 breathing-training content packages with supporting audiovisual assets.
+      - Coordinated version acceptance and third-party delivery optimization, verifying data mappings, visual feedback logic, interface elements, and the final audio and video assets for therapy content.
+      - Established product documentation standards across indications, assessments, therapies, metrics, algorithms, interfaces, and content assets, improving requirement alignment across hardware, software, design, and external partners.
+    techs:
+      - Medical product definition
+      - EEG biofeedback
+      - Assessment workflow design
+      - Therapeutic content design
+      - Reporting system design
+      - Cross-functional collaboration
+  - title: Research Assistant
+    company:
+      name: Xidian University Guangzhou Institute / Guangzhou Brain Modulation Technology Research Co., Ltd.
+    time: 2023.08 - Present
+    achievements:
+      - Supported ongoing projects in neuromodulation, sleep, psychiatry, psychology, and interoception, contributing to study planning, experiment execution, and day-to-day project coordination.
+      - Helped prepare proposals, ethics applications, and supporting materials while organizing research logic, experimental design, and submission documents.
+      - Took responsibility for literature review, material organization, and selected manuscript drafting to support research framing and interpretation.
+      - Used R to clean data, run statistical analyses, verify results, and contribute to the maintenance and iteration of the team's analysis platform.
+      - Created and delivered training materials in statistical analysis, providing both methodological support and online training for the team.
+      - Assisted in supervising students on research and thesis-related work, helping experiments and milestone delivery move forward.
+    techs:
+      - Research support
+      - R statistical analysis
+      - Experimental design
+      - Data analysis
+      - Training & instruction
+  - title: Teaching Assistant (R Courses & Workshops)
+    company:
+      name: Nanjing Normal University / Jiangsu Psychological Society
+    time: 2021.06 - 2022.06
+    achievements:
+      - Assisted with course preparation, assignment review, student guidance, and post-class Q&A.
+      - Guided participants through coding and psychology data-analysis exercises, supporting the practical use of research methods and statistical tools.
+    techs:
+      - Training & instruction
+      - R statistical analysis
+achievements:
+  - title: Papers and Manuscripts
+    subtitle: One first-author paper under review, one first-author manuscript in progress, one co-authored paper accepted, and one conference paper.
+  - title: Scholarships and Qualifications
+    subtitle: Graduate Academic Scholarship at Nanjing Normal University (2020 - 2022), university scholarship at Heilongjiang University of Chinese Medicine (2017 - 2019), CET-6, and National Computer Rank Examination Level 2.
+education:
+  - title: Nanjing Normal University · M.S. in Psychology
+    time: 2020.09 - 2023.06
+    description: Focused on psychology, neuroscience, and related research methods, with strong foundations in study design and data analysis.
+  - title: Heilongjiang University of Chinese Medicine · B.A. in Applied Psychology
+    time: 2016.09 - 2020.06
+skills:
+  - developments:
+      - "Medical content and product definition: structure product plans around indications, feedback mechanisms, core metrics, interaction logic, and software frameworks."
+      - "Assessment and therapy design: build the core loop across assessment, therapy, and reporting, including multi-dimensional workflows, scoring standards, and standardized intervention plans."
+      - "Metrics and rule systems: define composite indicators, thresholds, scoring logic, display rules, input-output parameters, and data storage requirements."
+      - "Documentation and standardization: produce requirement docs, metric definitions, report templates, disease label specifications, scripts, and content-asset documentation."
+      - "Research and data analysis: apply R for statistical analysis and support literature review, competitive analysis, experimental design, data processing, and interpretation."
+      - "Tools and domain knowledge: R, MATLAB, Python (basic), SQL (basic), EEG, ERPs, fNIRS, EMG, PPG, and biofeedback."
+links:
+  - mySite: []

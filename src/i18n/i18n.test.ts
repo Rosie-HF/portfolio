@@ -16,6 +16,11 @@ describe('useTranslations', () => {
     const t = useTranslations();
     expect(t('Resume-1')).toBe('在线履历');
   });
+
+  it('should return the translation for the english locale', () => {
+    const t = useTranslations('en');
+    expect(t('Navbar-3')).toBe('Cases');
+  });
 });
 
 describe('changeLanguage', () => {
@@ -29,5 +34,11 @@ describe('changeLanguage', () => {
     const path = '/about';
     const newPath = changeLanguage('zh-cn', path, true);
     expect(newPath).toBe('/zh-cn/about/');
+  });
+
+  it('should switch to the english locale path', () => {
+    const path = '/zh-cn/about';
+    const newPath = changeLanguage('en', path);
+    expect(newPath).toBe('/en/about/');
   });
 });
