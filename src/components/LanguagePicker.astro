@@ -9,7 +9,7 @@ const hasMultipleLanguages = Object.keys(languages).length > 1;
   hasMultipleLanguages && (
     <nav
       aria-label={t('LanguagePicker-1')}
-      class="inline-flex items-center gap-1 rounded-full border border-primary-200 bg-white/90 p-1 shadow-sm"
+      class="inline-flex items-center gap-1 rounded-full border border-primary-200 bg-white/90 p-1 shadow-sm backdrop-blur"
     >
       {Object.entries(languages).map(([key, name]) => {
         const isCurrentLocale = Astro.currentLocale === key;

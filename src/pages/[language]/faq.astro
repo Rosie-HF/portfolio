@@ -2,7 +2,6 @@
 import Base from '@/layouts/Base.astro';
 import Banner from '@/components/Banner.astro';
 import Accorditions from '@/components/Accorditions.astro'
-import LanguagePicker from '@/components/LanguagePicker.astro';
 import { languages, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
 import { getCollection, render } from 'astro:content';
 
@@ -27,10 +26,6 @@ export function getStaticPaths() {
         { t('Navbar-4') }
       </h1>
     </Banner>
-
-      <div class="container mx-auto px-4 mb-8 flex justify-center">
-        <LanguagePicker />
-      </div>
 
       <section class="mb-16 container mx-auto">
         <h2 class="sr-only">{t('NewestWork-1')}</h2>
