@@ -25,11 +25,7 @@ const t = useTranslations(Astro.currentLocale as LanguageKey);
         {
           website.socials.map((social) => (
             <li>
-              <a
-                class="hover:bg-primary-100 rounded-full transition-colors p-4 ml-0 lg:-ml-4 inline-block"
-                href={social.url}
-                target="_blank"
-              >
+              <a class="hover:bg-primary-100 rounded-full transition-colors p-4 ml-0 lg:-ml-4 inline-block" href={social.url} target="_blank">
                 {social.name}
               </a>
             </li>
@@ -38,18 +34,20 @@ const t = useTranslations(Astro.currentLocale as LanguageKey);
       </ul>
     </div>
   </div>
-  <div class="flex justify-between">
+  <div class="flex justify-between gap-4">
     <p class="opacity-80" set:html={DOMPurify.sanitize(website.copyright)} />
-    <span>{ website.emojiStatus }</span>
+    <span>{website.emojiStatus}</span>
   </div>
 </footer>
 
-<script is:inline define:vars={{ popoverText: t('Footer-7')}}>
-  document.addEventListener("astro:page-load", () => {
-    document.querySelector('[data-mail-btn]').addEventListener('click', (e) => {
+<script is:inline define:vars={{ popoverText: t('Footer-7') }}>
+  document.addEventListener('astro:page-load', () => {
+    const mailButton = document.querySelector('[data-mail-btn]');
+    if (!mailButton) return;
+
+    mailButton.addEventListener('click', (e) => {
       navigator.clipboard.writeText(e.target.dataset.mailBtn);
 
-      /* eslint-disable no-param-reassign */
       function showPopover(targetElement) {
         targetElement.disabled = true;
         const popover = document.createElement('div');
@@ -67,7 +65,6 @@ const t = useTranslations(Astro.currentLocale as LanguageKey);
           targetElement.disabled = false;
         }, 1000);
       }
-      /* eslint-enable no-param-reassign */
 
       showPopover(e.target);
     });

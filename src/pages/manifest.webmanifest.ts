@@ -6,11 +6,12 @@ import { resolveAsset } from '@/utils/paths.ts';
 // eslint-disable-next-line import/prefer-default-export
 export const GET: APIRoute = async () => {
   const config = await getEntry('config', 'site');
-  const { favicons } = config!.data;
+  const { favicons, website } = config!.data;
 
   return new Response(
     JSON.stringify({
-      name: "Wei's Website",
+      name: website.name,
+      short_name: website.username,
       icons: [
         {
           src: resolveAsset(favicons['android-chrome-192']),

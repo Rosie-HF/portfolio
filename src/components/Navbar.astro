@@ -1,10 +1,12 @@
 ---
-import LanguagePicker from '@/components/LanguagePicker.astro'
+import LanguagePicker from '@/components/LanguagePicker.astro';
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import { defaultLocale, useTranslations,prefixDefaultLocale,  type LanguageKey } from '@/i18n/i18n.ts';
-import { resolveAsset } from '@/utils/paths.ts';
+import { defaultLocale, useTranslations, prefixDefaultLocale, type LanguageKey } from '@/i18n/i18n.ts';
+import { getEntry } from 'astro:content';
 
 const t = useTranslations(Astro.currentLocale as LanguageKey);
+const config = await getEntry('config', 'site');
+const { website } = config!.data;
 
 const links = [
   { url: '/', name: t('Navbar-1'), isHiddenOnMobile: true },
@@ -19,9 +21,9 @@ function isActiveNavItem(navItem: string) {
   const pathWithoutBase = base && pathname.startsWith(base) ? pathname.slice(base.length) : pathname;
   const currentPath = pathWithoutBase.replace(/^\/|\/$/g, '');
   const localePrefix = prefixDefaultLocale ? Astro.currentLocale : '';
-  const isHomepage = navItem === '/'
-  const isDefaultLocaleActive = currentPath === localePrefix
-  const isOtherLocaleActive = currentPath === Astro.currentLocale
+  const isHomepage = navItem === '/';
+  const isDefaultLocaleActive = currentPath === localePrefix;
+  const isOtherLocaleActive = currentPath === Astro.currentLocale;
 
   if (isHomepage) {
     return isOtherLocaleActive || isDefaultLocaleActive;
@@ -32,25 +34,19 @@ function isActiveNavItem(navItem: string) {
 ---
 
 <nav style="height: var(--navbar-height)" class="px-4 flex flex-col md:flex-row flex-wrap justify-center z-50 relative md:justify-between items-center container mx-auto print:hidden">
-  <a
-    class="hover:bg-primary-100 p-4 -m-4 rounded-full aspect-square flex justify-center items-center transition-colors"
-    href={getRelativeLocaleUrl(Astro.currentLocale || defaultLocale, '/')}
-  >
-      <img
-      width="40"
-      height="40"
-      src={resolveAsset('/assets/global/logo.svg')}
-      alt="Logo"
-    />
+  <a class="hover:bg-primary-100 px-5 py-3 -m-2 rounded-full transition-colors flex items-center gap-3" href={getRelativeLocaleUrl(Astro.currentLocale || defaultLocale, '/')}>
+    <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary-900 text-primary-50 font-semibold">
+      何
+    </span>
+    <span class="hidden sm:flex flex-col leading-tight">
+      <span class="font-semibold">{website.username}</span>
+      <span class="text-sm text-primary-600">Medical Product Portfolio</span>
+    </span>
   </a>
 
   <div class="flex gap-2 items-center">
     <div class="relative" data-nav-container>
-      <div
-        id="nav-indicator"
-        class="nav-indicator absolute left-0 top-0 z-0 rounded-full bg-primary-900 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] opacity-0 pointer-events-none"
-        transition:persist
-      ></div>
+      <div id="nav-indicator" class="nav-indicator absolute left-0 top-0 z-0 rounded-full bg-primary-900 transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] opacity-0 pointer-events-none" transition:persist></div>
       <ul class="flex gap-2">
         {
           links.map(({ url, name, isHiddenOnMobile }) => {
@@ -73,7 +69,7 @@ function isActiveNavItem(navItem: string) {
         }
       </ul>
     </div>
-    <LanguagePicker/>
+    <LanguagePicker />
   </div>
 </nav>
 
@@ -96,7 +92,6 @@ function isActiveNavItem(navItem: string) {
 
       if (activeLink) {
         if (!window.navInitialized) {
-          // First load of the site: snap to position
           indicator.style.transition = 'none';
           updateIndicator(activeLink);
           requestAnimationFrame(() => {
@@ -106,7 +101,6 @@ function isActiveNavItem(navItem: string) {
           });
           window.navInitialized = true;
         } else {
-          // Subsequent loads (persisted): slide from old position
           updateIndicator(activeLink);
         }
       }
@@ -129,4 +123,3 @@ function isActiveNavItem(navItem: string) {
     }
   })();
 </script>
-

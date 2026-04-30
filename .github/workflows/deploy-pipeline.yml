@@ -8,6 +8,7 @@ on:
 
 env:
   BASE_URL: ${{ vars.PUBLIC_BASE_URL }}
+  SITE_URL: ${{ vars.PUBLIC_SITE_URL }}
 
 jobs:
   # ESLint + Prettier

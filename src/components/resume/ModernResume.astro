@@ -3,9 +3,8 @@ import type { CollectionEntry } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 import { useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
 import DOMPurify from 'isomorphic-dompurify';
-// Only use qrcode in dev env
 // eslint-disable-next-line import/no-extraneous-dependencies
-import QRCode from 'qrcode'
+import QRCode from 'qrcode';
 
 interface Props {
   resume: CollectionEntry<'resume'>['data'];
@@ -14,7 +13,7 @@ interface Props {
 const { resume } = Astro.props;
 const t = useTranslations(Astro.currentLocale as LanguageKey);
 const currentTime = new Date()
-  .toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit', day: '2-digit' })
+  .toLocaleDateString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit' })
   .replace(/\//g, '-');
 
 type Achievement = string | Achievement[];
@@ -25,243 +24,240 @@ function renderAchievements(list: Achievement): string {
   return list
     .map((item) => {
       if (Array.isArray(item)) {
-        return `<ul style="padding-left: 1.2em" class="list-disc list-inside">${renderAchievements(item)}</ul>`
+        return `<ul style="padding-left: 1.2em" class="list-disc list-inside">${renderAchievements(item)}</ul>`;
       }
-      return `<li>${item}</li>`
+      return `<li>${item}</li>`;
     })
-    .join("")
+    .join('');
 }
+
+const hasLinks = resume.links.some((section) => section.mySite.length > 0);
+const hasSocialLinks = resume.personalInfo.socialLinks.length > 0;
 ---
-  <div class="container mx-auto flex justify-center">
-    <div class="relative">
-      <div class="a4 bg-white space-y-4 shadow-xl print:shadow-none">
-         <!-- Intro -->
-         <div class="grid md:grid-cols-4 grid-cols-1">
-           <!-- Personal Info -->
-           <div class="flex flex-col gap-4">
-             <!-- Personal properties -->
-             <div>
-               <h1 class="font-medium name">{resume.personalInfo.name}</h1>
-               <div class="font-medium">{resume.personalInfo.role}</div>
-               <!-- <div class="text-primary-600">{resume.personalInfo.location}</div> -->
-             </div>
-             <!-- Socials -->
-             <ul class="flex -ml-2">
-               {
-                 resume.personalInfo.socialLinks.map(link => (
-                   <li>
-                     <a class="hover:bg-primary-50 rounded-sm p-2 inline-block" title={link.name} href={link.url}>
-                       <Icon size={16}  name={link.icon} />
-                     </a>
-                   </li>  
-                 ))
-               }
-             </ul>
-           </div>
-   
-           <!-- Quote -->
-            <div class="md:col-start-2 md:col-span-3 relative">
-              <blockquote class="text-primary-500 quote font-serif" set:html={DOMPurify.sanitize(resume.personalInfo.description)}>
-             </blockquote>
-           </div>
-         </div>
-         <hr class="border-b">
-         <!-- Work Experience -->
-         <div class="grid md:grid-cols-4 grid-cols-1">
-           <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
-             <Icon class="inline-block md:hidden" size={24} name="material-symbols:home-work-outline-rounded" />
-             <h2 class="font-medium category-title">{t('Resume-2')}</h2>
-           </div>
-           <div class="md:col-start-2 md:col-span-3 space-y-4">
-             {
-               resume.workExperience.map(experience => (
-                   <div class="flex flex-col gap-2">
-                     <div>
-                       <div class="mb-2">
-                         <h3 class="font-medium category-item-title">{experience.title}</h3>
-                         <ul class="flex flex-wrap gap-x-4 text-primary-600">
-                           <li>
-                             <time class="font-mono work-tag">{experience.time}</time>
-                           </li>
-                           <li>
-                             <span class="work-tag">
-                               <a class="underline" href={experience.company.link}>{experience.company.name}</a>
-                             </span>
-                           </li>
-                         </ul>
-                       </div>
-                       <ul class="list-disc list-inside font-serif" set:html={DOMPurify.sanitize(renderAchievements(experience.achievements))}>
-                       </ul>
-                     </div>
-                     <ul class="flex flex-wrap gap-2 text-xs">
-                     {
-                       experience.techs.map(tech => <li class="border border-primary-100 bg-primary-50 text-primary-800  rounded-md inline-block p-1 px-2 whitespace-nowrap work-tag">
-                         {tech}
-                       </li>)
-                     }
-                       
-                     </ul>
-                   </div>
-                 ))
-             }
-           </div>
-         </div>
-         <hr class="border-b">
-         <!-- Achievements -->
-         <div class="grid md:grid-cols-4 grid-cols-1">
-           <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
-             <Icon class="inline-block md:hidden" size={24} name="material-symbols:cheer-outline-rounded" />
-             <h2 class="font-medium category-title">{t('Resume-3')}</h2>
-           </div>
-           <div class="md:col-start-2 md:col-span-3 space-y-4">
-             {
-               resume.achievements.map(achievement => (
-                   <div class="flex flex-col gap-2">
-                     <h3 class="font-medium category-item-title">{achievement.title}</h3>
-                     <p class="work-tag text-primary-600">
-                       <a class="underline" href={achievement.url}>
-                         {achievement.subtitle}
-                       </a>
-                     </p>
-                   </div>
-                 ))
-             }
-           </div>
-         </div>
-         <hr class="border-b">
-         <!-- Education -->
-         <div class="grid md:grid-cols-4 grid-cols-1">
-           <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
-             <Icon class="inline-block md:hidden" size={24} name="material-symbols:school-outline-rounded" />
-             <h2 class="font-medium category-title">{t('Resume-4')}</h2>
-           </div>
-           {
-             resume.education.map(education => (
-                 <div class="md:col-start-2 md:col-span-3 ">
-                   <h3 class="font-medium category-item-title">{education.title}</h3>
-                   <time class="font-mono work-tag text-primary-600">{education.time}</time>
-                   <p class="font-serif" set:html={DOMPurify.sanitize(education.description)}></p>
-                 </div>
-               ))
-           }
-         </div>    
-         <hr class="border-b">
-         <!-- Skill -->
-         <div class="grid md:grid-cols-4 grid-cols-1">
-           <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
-             <Icon class="inline-block md:hidden" size={24} name="material-symbols:category-outline-rounded" />
-             <h2 class="font-medium category-title">{t('Resume-5')}</h2>
-           </div>
-   
-           <div class="col-span-3 flex gap-4">
-           {resume.skills.map((skill) => (
-             <Fragment>
-               {skill.developments && 
-                 <div class="w-full">
-                   <ul class="list-disc list-inside">
-                     {skill.developments && skill.developments.map(development => <li>{development}</li>)}
-                   </ul>
-                 </div>
-               }
-             </Fragment>
-             ))}
-           </div>
-         </div>
-   
-         <hr class="border-b">
-   
-         <!-- Links -->
-         <div class="grid md:grid-cols-4 grid-cols-1">
-           <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
-             <Icon class="inline-block md:hidden" size={24} name="material-symbols:link-rounded" />
-             <h2 class="font-medium category-title">{t('Resume-7')}</h2>
-           </div>
-   
-           <div class="col-span-3 flex gap-4">
-             <div>
-               <p class="inline-block mb-2 font-serif">{t('Resume-8')}</p>
-     
-               {resume.links.map((section) => (
-                   <ul class="list-inside list-disc">
-                     {section.mySite.map(site => 
-                     <li>
-                       {site.title}
-                       <a class="underline" href={site.link}>{site.link}</a>
-                     </li>)}
-                   </ul>
-                 ))}
-   
-               <!-- Socials -->
-               <ul class="list-disc list-inside">
-                 {
-                   resume.personalInfo.socialLinks.map(link => {
-                     const stripedEmailToUrl = link.url.replace(/^mailto:/, '')
-                     return (
-                     <li>
-                       {link.name}: 
-                       <a class="underline" title={link.name} href={link.url}>{stripedEmailToUrl}</a>
-                     </li>  
-                   )
-                   })
-                 }
-               </ul>
-   
-               <!-- QRCodes -->
-               <ul class="flex gap-4 flex-wrap text-center mt-4">
-                 {resume.links.map((section) => (
-                   section.mySite.map(async (site) => {
-                     const qrCodeUrl = await QRCode.toDataURL(site.link, {
-                       width: 80,
-                       margin: 0,
-                       errorCorrectionLevel: 'L'
-                     })
-   
-                     const stripedColonTitle = site.title.replace(/\s*[:：]\s*$/, "");
-   
-   
-                     return <li style="width: 100px;">
-                     <img width="80" height="80" class="inline" src={qrCodeUrl} alt={`${qrCodeUrl} QRCode`} />
-                     <span class="text-xs whitespace-nowrap">{stripedColonTitle}</span>
-                   </li>})
-                 ))}
-   
-                 {
-                   resume.personalInfo.socialLinks.map(async (link) => {
-                     const qrCodeUrl = await QRCode.toDataURL(link.url, {
-                       width: 80,
-                       margin: 0,
-                       errorCorrectionLevel: 'L'
-                     })
-   
-                     return (
-                     <li style="width: 100px;">
-                       <img width="80" height="80" class="inline" src={qrCodeUrl} alt={`${link.name} QRCode`} />
-                       <span class="text-xs whitespace-nowrap">{link.name}</span>
-                     </li>
-                   )
-                   })
-                 }
-               </ul>
-             </div>
-           </div>
-         </div>
-         
-         <hr class="border-b">
-   
-         <div class="text-xs flex flex-wrap gap-2 justify-between">
-           <p>{t('Resume-9')}</p>
-           <p class="font-mono text-right whitespace-nowrap">
-             {t('Resume-10')}{currentTime}</p>
-         </div>
-       </div>
+
+<div class="container mx-auto flex justify-center">
+  <div class="relative">
+    <div class="a4 bg-white space-y-4 shadow-xl print:shadow-none">
+      <div class="grid md:grid-cols-4 grid-cols-1">
+        <div class="flex flex-col gap-4">
+          <div>
+            <h1 class="font-medium name">{resume.personalInfo.name}</h1>
+            <div class="font-medium">{resume.personalInfo.role}</div>
+          </div>
+          <ul class="flex -ml-2">
+            {
+              resume.personalInfo.socialLinks.map((link) => (
+                <li>
+                  <a class="hover:bg-primary-50 rounded-sm p-2 inline-block" title={link.name} href={link.url}>
+                    <Icon size={16} name={link.icon} />
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <div class="md:col-start-2 md:col-span-3 relative">
+          <blockquote class="text-primary-500 quote font-serif" set:html={DOMPurify.sanitize(resume.personalInfo.description)}></blockquote>
+        </div>
+      </div>
+      <hr class="border-b">
+
+      <div class="grid md:grid-cols-4 grid-cols-1">
+        <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
+          <Icon class="inline-block md:hidden" size={24} name="material-symbols:home-work-outline-rounded" />
+          <h2 class="font-medium category-title">{t('Resume-2')}</h2>
+        </div>
+        <div class="md:col-start-2 md:col-span-3 space-y-4">
+          {
+            resume.workExperience.map((experience) => (
+              <div class="flex flex-col gap-2">
+                <div>
+                  <div class="mb-2">
+                    <h3 class="font-medium category-item-title">{experience.title}</h3>
+                    <ul class="flex flex-wrap gap-x-4 text-primary-600">
+                      <li>
+                        <time class="font-mono work-tag">{experience.time}</time>
+                      </li>
+                      <li>
+                        <span class="work-tag">
+                          {experience.company.link ? <a class="underline" href={experience.company.link}>{experience.company.name}</a> : <span>{experience.company.name}</span>}
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <ul class="list-disc list-inside font-serif" set:html={DOMPurify.sanitize(renderAchievements(experience.achievements))}></ul>
+                </div>
+                <ul class="flex flex-wrap gap-2 text-xs">
+                  {
+                    experience.techs.map((tech) => (
+                      <li class="border border-primary-100 bg-primary-50 text-primary-800 rounded-md inline-block p-1 px-2 whitespace-nowrap work-tag">
+                        {tech}
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <hr class="border-b">
+
+      <div class="grid md:grid-cols-4 grid-cols-1">
+        <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
+          <Icon class="inline-block md:hidden" size={24} name="material-symbols:cheer-outline-rounded" />
+          <h2 class="font-medium category-title">{t('Resume-3')}</h2>
+        </div>
+        <div class="md:col-start-2 md:col-span-3 space-y-4">
+          {
+            resume.achievements.map((achievement) => (
+              <div class="flex flex-col gap-2">
+                <h3 class="font-medium category-item-title">{achievement.title}</h3>
+                {achievement.url ? <p class="work-tag text-primary-600"><a class="underline" href={achievement.url}>{achievement.subtitle}</a></p> : <p class="work-tag text-primary-600">{achievement.subtitle}</p>}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <hr class="border-b">
+
+      <div class="grid md:grid-cols-4 grid-cols-1">
+        <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
+          <Icon class="inline-block md:hidden" size={24} name="material-symbols:school-outline-rounded" />
+          <h2 class="font-medium category-title">{t('Resume-4')}</h2>
+        </div>
+        {
+          resume.education.map((education) => (
+            <div class="md:col-start-2 md:col-span-3">
+              <h3 class="font-medium category-item-title">{education.title}</h3>
+              <time class="font-mono work-tag text-primary-600">{education.time}</time>
+              {education.description && <p class="font-serif" set:html={DOMPurify.sanitize(education.description)}></p>}
+            </div>
+          ))
+        }
+      </div>
+      <hr class="border-b">
+
+      <div class="grid md:grid-cols-4 grid-cols-1">
+        <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
+          <Icon class="inline-block md:hidden" size={24} name="material-symbols:category-outline-rounded" />
+          <h2 class="font-medium category-title">{t('Resume-5')}</h2>
+        </div>
+
+        <div class="col-span-3 flex gap-4">
+          {resume.skills.map((skill) => (
+            <Fragment>
+              {skill.developments && (
+                <div class="w-full">
+                  <ul class="list-disc list-inside">
+                    {skill.developments.map((development) => <li>{development}</li>)}
+                  </ul>
+                </div>
+              )}
+            </Fragment>
+          ))}
+        </div>
+      </div>
+
+      {(hasLinks || hasSocialLinks) && (
+        <>
+          <hr class="border-b">
+
+          <div class="grid md:grid-cols-4 grid-cols-1">
+            <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
+              <Icon class="inline-block md:hidden" size={24} name="material-symbols:link-rounded" />
+              <h2 class="font-medium category-title">{t('Resume-7')}</h2>
+            </div>
+
+            <div class="col-span-3 flex gap-4">
+              <div>
+                <p class="inline-block mb-2 font-serif">{t('Resume-8')}</p>
+
+                {resume.links.map((section) => (
+                  <ul class="list-inside list-disc">
+                    {section.mySite.map((site) => (
+                      <li>
+                        {site.title}
+                        <a class="underline" href={site.link}>{site.link}</a>
+                      </li>
+                    ))}
+                  </ul>
+                ))}
+
+                <ul class="list-disc list-inside">
+                  {
+                    resume.personalInfo.socialLinks.map((link) => {
+                      const displayUrl = link.url.replace(/^mailto:/, '').replace(/^tel:/, '');
+                      return (
+                        <li>
+                          {link.name}:
+                          {' '}
+                          <a class="underline" title={link.name} href={link.url}>{displayUrl}</a>
+                        </li>
+                      );
+                    })
+                  }
+                </ul>
+
+                <ul class="flex gap-4 flex-wrap text-center mt-4">
+                  {resume.links.map((section) => (
+                    section.mySite.map(async (site) => {
+                      const qrCodeUrl = await QRCode.toDataURL(site.link, {
+                        width: 80,
+                        margin: 0,
+                        errorCorrectionLevel: 'L',
+                      });
+
+                      const title = site.title.replace(/\s*[:：]\s*$/, '');
+
+                      return (
+                        <li style="width: 100px;">
+                          <img width="80" height="80" class="inline" src={qrCodeUrl} alt={`${title} QRCode`} />
+                          <span class="text-xs whitespace-nowrap">{title}</span>
+                        </li>
+                      );
+                    })
+                  ))}
+
+                  {
+                    resume.personalInfo.socialLinks.map(async (link) => {
+                      const qrCodeUrl = await QRCode.toDataURL(link.url, {
+                        width: 80,
+                        margin: 0,
+                        errorCorrectionLevel: 'L',
+                      });
+
+                      return (
+                        <li style="width: 100px;">
+                          <img width="80" height="80" class="inline" src={qrCodeUrl} alt={`${link.name} QRCode`} />
+                          <span class="text-xs whitespace-nowrap">{link.name}</span>
+                        </li>
+                      );
+                    })
+                  }
+                </ul>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+
+      <hr class="border-b">
+
+      <div class="text-xs flex flex-wrap gap-2 justify-between">
+        <p>{t('Resume-9')}</p>
+        <p class="font-mono text-right whitespace-nowrap">{t('Resume-10')}{currentTime}</p>
+      </div>
     </div>
   </div>
+</div>
+
 <style is:inline>
   body {
-    /* https://developer.mozilla.org/en-US/docs/Web/CSS/print-color-adjust */
     print-color-adjust: exact;
   }
-  
+
   .a4 .name {
     font-size: 1.6rem;
   }
@@ -272,12 +268,11 @@ function renderAchievements(list: Achievement): string {
   }
 
   .a4 .quote::before {
-    position:absolute;
-    top: 0;
+    position: absolute;
+    top: 0.2em;
     left: 0;
-    display:inline-block;
+    display: inline-block;
     content: '';
-    top:.2em;
     width: 16px;
     height: 16px;
     opacity: 0.4;
@@ -316,7 +311,7 @@ function renderAchievements(list: Achievement): string {
     left: 0;
     width: 100%;
     height: 1cm;
-    background: linear-gradient(to bottom,white, transparent);
+    background: linear-gradient(to bottom, white, transparent);
     pointer-events: none;
     z-index: 1;
   }
@@ -328,7 +323,7 @@ function renderAchievements(list: Achievement): string {
     left: 0;
     width: 100%;
     height: 1cm;
-    background: linear-gradient(to top,white, transparent);
+    background: linear-gradient(to top, white, transparent);
     pointer-events: none;
     z-index: 1;
   }
@@ -344,7 +339,8 @@ function renderAchievements(list: Achievement): string {
       overflow: visible;
     }
 
-    .a4::before, .a4::after {
+    .a4::before,
+    .a4::after {
       display: none;
     }
   }

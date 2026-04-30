@@ -1,124 +1,79 @@
 ---
 personalInfo:
-  name: 王小明
-  role: 网页开发
-  description: 我经营<a href="#" class="underline text-primary-900">网页技术部落格累计共上百篇文章</a>并透过<a
-    href="#" class="underline text-primary-900">技术自媒体</a>发掘各式有趣的网页相关议题，例如：<span class="text-primary-900">设计、UI、UX、网页开发与测试……</span>
-    等领域都有涉略。
+  name: 何芳
+  role: 医疗健康产品 / 医学内容 / 数字疗法方向
+  description: 心理学硕士，具备心理学研究、脑科学相关医学内容设计、产品方案梳理与数据分析背景。熟悉 <span class="text-primary-900">ADHD、脑电及多参数生理信号、生物反馈、评估与治疗流程设计</span>，能够将医学逻辑、产品需求与跨部门协作结合起来，推动评估、治疗、报告等核心模块从方案设计走向研发落地。
   socialLinks:
-  - name: GitHub
-    icon: simple-icons:github
-    url: https://github.com/
-  - name: Email
-    icon: simple-icons:gmail
-    url: mailto:test@example.com
-  - name: LinkedIn
-    icon: simple-icons:linkedin
-    url: https://www.linkedin.com/
-  - name: Behance
-    icon: simple-icons:behance
-    url: https://www.behance.net/
-  - name: Threads
-    icon: simple-icons:threads
-    url: https://www.threads.com/
+    - name: Email
+      icon: simple-icons:microsoftoutlook
+      url: mailto:fanghe13@outlook.com
+    - name: Phone
+      icon: material-symbols:call-outline-rounded
+      url: tel:17745169759
 workExperience:
-- title: 网页前端工程师
-  company:
-    name: 不存在的股份有限公司
-    link: https://example.com/
-  time: 2025/07 ~ 至今．在职
-  achievements:
-  - 独立负责核心业务前端架构设计与开发，维持系统高可用性与扩展性
-  - 优化前端效能与首屏载入速度，将 Core Web Vitals 指标提升至优秀等级
-  - 导入自动化测试流程与 CI/CD 管道，显著减少手动测试成本与回归错误
-  - 参与技术选型与专案重构，解决旧有技术债并提升团队开发效率
-  - 与后端、产品经理及设计师协作，定义技术规范与 API 介面标准
-  - 撰写详细的技术文档与知识库，推动团队内部技术交流与经验传承
-  techs:
-  - Go Gin
-  - MongoDB
-  - Redis
-  - TypeScript
-  - Vite Vue3
-  - TanStack Query
-  - Pinia
-  - Tailwind
-  - Shadcn Vue
-  - Vitest
-  - Vue Test Utils
-- title: 前端工程师
-  company:
-    name: 不存在的股份有限公司
-    link: https://example.com/
-  time: 2023/10 ~ 2024/10．1 年
-  achievements:
-  - 优化专案架构，提升代码复用率与维护效率
-  - 导入现代化前端框架，提升系统效能与安全性
-  - 建立标准化元件库，加速产品开发周期
-  - 设计并实作 CI/CD 流程，实现自动化测试与部署
-  - 撰写自动化测试脚本，确保核心功能之稳定性
-  - 参与资安漏洞检测与修复建议
-  techs:
-  - Nx Monorepo
-  - TypeScript
-  - Nuxt 3
-  - Pinia
-  - Tailwind
-  - Shadcn Vue
-  - Cypress
-  - Cucumber
-  - Vitest
-  - Git Flow
-  - GitHub Actions
-- title: 前端助教
-  company:
-    name: 不存在的股份有限公司
-    link: https://example.com/
-  time: 2022/07 ~ 2023/07．1 年
-  achievements:
-  - 协助指导学员解决前端开发相关技术难题
-  - 参与撰写网页开发课程教材与实作范例
-  - 撰写技术部落格文章，分享开发经验与知识
-  techs:
-  - React
-  - Vue
-  - jQuery
-  - Bootstrap
-  - Sass
-- title: 网页设计开发自由工作者
-  company:
-    name: 不存在的股份有限公司
-    link: https://example.com/
-  time: 2020/03 ~ 2020/05．3 个月
-  achievements:
-  - 负责多个品牌活动网页之视觉设计与前端实作
-  techs:
-  - Sass
-  - Bootstrap
+  - title: 医学内容设计 / 产品方案支持
+    company:
+      name: 某医疗科技公司
+    time: 2025.07 - 2026.04
+    achievements:
+      - 通过行业竞品分析与多参数生物反馈全链路调研，系统梳理反馈机制、适应症方向、核心指标、计算方式与交互逻辑，推动明确产品定义与整体软件框架，为后续功能设计和研发实现建立统一基础
+      - 主导评估、治疗、报告三大核心模块设计，梳理 ICD-11、DSM-5 疾病标签体系，定义生理、行为学、量表等多维评估流程、评分标准与报告结构，输出 demo、各适应症标准化治疗方案及 4 类报告模板，逐步搭建软件核心业务闭环
+      - 定义多参数生物反馈核心指标与算法规则，明确复合指标、阈值计算、实时反馈得分、治疗效果得分等关键逻辑，并同步定义主控屏、副屏及评估、治疗过程中的指标来源、展示规则、输入输出参数、数据存储与语音播放逻辑，形成研发可直接承接的规则体系
+      - 主导游戏化心理治疗与脑电反馈内容设计，完成 10 个脑电反馈游戏方案、8 个心理治疗指导语脚本，以及 4 个呼吸训练内容与配套视听素材方案，推动治疗内容从概念设计进入可交付状态
+      - 推进版本验收与第三方交付优化，持续核对脑电反馈游戏的数据映射、视觉反馈逻辑和界面元素是否符合既定方案，并参与心理治疗素材的配音、视频与音频成品验收
+      - 主导产品文档标准化建设，系统整理适应症、评估、治疗、指标、算法、界面与素材相关内容，统一文档结构与表达口径，提升软硬件研发、设计及外部协作中的需求传递效率
+    techs:
+      - 医疗产品定义
+      - EEG 生物反馈
+      - 评估流程设计
+      - 治疗内容设计
+      - 报告体系设计
+      - 跨部门协作
+  - title: 科研助理
+    company:
+      name: 西安电子科技大学广州研究院 / 广州脑调控技术研究有限公司
+    time: 2023.08 - 至今
+    achievements:
+      - 持续支持神经调控、睡眠、精神心理及内感受相关课题，参与研究方案梳理、实验推进与项目执行
+      - 参与立项标书、伦理申请等材料撰写，协助完成研究逻辑、实验设计与申报材料整理
+      - 负责文献检索、资料整理和部分论文内容撰写，支持研究框架搭建与结论讨论
+      - 使用 R 语言完成数据整理、统计分析、结果检查，并参与团队统计分析平台的开发、维护和更新
+      - 制作并讲授统计分析培训内容，为团队提供方法支持和线上培训支持
+      - 协助指导学生开展科研和毕业论文相关工作，推动实验进度和阶段目标落地
+    techs:
+      - 科研支持
+      - R 统计分析
+      - 实验设计
+      - 数据分析
+      - 培训与教学
+  - title: 教学助理（R 语言课程与工作坊）
+    company:
+      name: 南京师范大学 / 江苏省心理学会
+    time: 2021.06 - 2022.06
+    achievements:
+      - 协助完成课程材料准备、作业批改、学生指导和课后答疑
+      - 带领学员完成代码编写与心理学数据分析练习，支持研究方法与统计工具的实际应用
+    techs:
+      - 培训与教学
+      - R 统计分析
 achievements:
-- title: 某年度技术征文比赛 - 入选
-  subtitle: 撰写系列技术文章分享开发实务心得
-  url: https://example.com/
+  - title: 学术论文与手稿
+    subtitle: 一作论文 1 篇在投，一作手稿 1 篇撰写中，参与论文 1 篇已接收，会议论文 1 篇
+  - title: 奖学金与资格
+    subtitle: 南京师范大学研究生学业奖学金（2020 - 2022）、黑龙江中医药大学校级奖学金（2017 - 2019）、大学英语六级、全国计算机等级考试二级
 education:
-- title: 某国立大学．资讯设计系学士毕业
-  time: 2019/09 ~ 2023/06
-  description: 于在校期间积极参与产学合作专案，并负责多项专案之网页设计与前端开发工作。
+  - title: 南京师范大学 · 心理学硕士（学术型推免）
+    time: 2020.09 - 2023.06
+    description: 研究方向围绕心理学、脑科学与相关研究方法，具备较强的研究设计与数据分析基础。
+  - title: 黑龙江中医药大学 · 应用心理学本科
+    time: 2016.09 - 2020.06
 skills:
-- developments:
-  - UI：Figma、Illustrator、Photoshop
-  - 切版：BEM CSS、Sass、Bootstrap 5、Tailwind、Shadcn
-  - 前端：Nuxt 3（Vue）、Next 15（React）、Astro、jQuery
-  - 状态管理：Pinia、Zustand
-  - 后端：Express、Go Gin、MongoDB、Cloudflare Workers
-  - 程式品质：ESLint、Prettier 与 TypeScript
-  - 程式测试：Vitest、Vue Test Utils、Playwright、Cypress
-  - 代码管理：Git、GitLab、GitHub、Git Flow、GitHub Flow
-  - DevOps：GitHub Actions、Docker
+  - developments:
+      - 医学内容与产品定义：围绕适应症、反馈机制、核心指标、交互逻辑和软件框架完成产品方案梳理
+      - 评估与治疗设计：能够设计评估、治疗、报告三大核心模块，梳理多维评估流程、评分标准和标准化治疗方案
+      - 指标与规则体系搭建：定义复合指标、阈值、得分逻辑、展示规则、输入输出参数及数据存储规则
+      - 文档与标准化建设：输出需求文档、指标说明、报告模板、疾病标签规范、脚本和素材文档
+      - 研究与数据分析：掌握 R 语言统计分析，具备文献调研、竞品分析、实验设计、数据处理与结果解释能力
+      - 工具与专业方向：R、MATLAB、Python（基础）、SQL（基础）、EEG、ERPs、fNIRS、EMG、PPG、生物反馈
 links:
-- mySite:
-  - title: 线上履历：
-    link: https://example.com/resume
-  - title: 线上作品集：
-    link: https://example.com/portfolio
-  - title: 技术部落格：
-    link: https://example.com/blog
+  - mySite: []

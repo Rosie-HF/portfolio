@@ -11,23 +11,17 @@ globalOgImage:
   width: 1200
   type: image/jpeg
 website:
-  name: Letter
-  username: Joe
-  email: example@example.com
-  emojiStatus: ✉️
+  name: He Fang Portfolio
+  username: 何芳
+  email: fanghe13@outlook.com
+  emojiStatus: Medical Product
   globalBackgroundTextureImage: /assets/global/nature-paper.webp
   globalHighlightTextureImage: /assets/global/highlight-texture.webp
   socials:
-    - name: Blog
-      url: https://example.com/
-    - name: GitHub
-      url: https://example.com/
-    - name: Threads
-      url: https://example.com/
-    - name: Behance
-      url: https://example.com/
-    - name: CakeResume
-      url: https://example.com/
+    - name: Email
+      url: mailto:fanghe13@outlook.com
+    - name: 电话
+      url: tel:17745169759
 heroVideo:
   poster: /assets/global/hero.webp
   sources:
@@ -39,46 +33,34 @@ techGroups:
   - id: "Work-TechGroup-all"
     relatedTechs: []
     icon: "material-symbols:person-play-outline-rounded"
-    themeColor: "#171717"
-  - id: "Work-TechGroup-UserInterface"
+    themeColor: "#1f3c3d"
+  - id: "Work-TechGroup-Product"
     relatedTechs:
-      - "Bootstrap"
-      - "Chart.js"
-      - "Daisy UI"
-      - "Framer Motion"
-      - "GSAP"
-      - "Shadcn UI"
-    icon: "material-symbols:layers-outline-rounded"
-    themeColor: "#5c038f"
-  - id: "Work-TechGroup-Vue"
+      - "医疗产品定义"
+      - "数字疗法方案"
+      - "报告体系设计"
+    icon: "material-symbols:inventory-2-outline-rounded"
+    themeColor: "#2d5f5d"
+  - id: "Work-TechGroup-Clinical"
     relatedTechs:
-      - "Nuxt(Vue)"
-      - "Pinia"
-      - "Vue"
-      - "Vue Router"
-    icon: "mdi:vuejs"
-    themeColor: "#33a06f"
-  - id: "Work-TechGroup-React"
+      - "EEG 生物反馈"
+      - "ICD-11 / DSM-5"
+      - "评估流程设计"
+      - "治疗内容设计"
+    icon: "material-symbols:neurology-outline-rounded"
+    themeColor: "#457b69"
+  - id: "Work-TechGroup-Research"
     relatedTechs:
-      - "Next(React)"
-      - "React"
-      - "React Router"
-    icon: "mdi:react"
-    themeColor: "#087ea4"
-  - id: "Work-TechGroup-Testing"
+      - "R 统计分析"
+      - "科研支持"
+      - "实验设计"
+      - "数据分析"
+      - "培训与教学"
+    icon: "material-symbols:query-stats-rounded"
+    themeColor: "#8d6a2f"
+  - id: "Work-TechGroup-Delivery"
     relatedTechs:
-      - "Playwright"
-      - "Vitest"
-      - "Cypress"
-      - "Lighthouse CI"
-      - "Node.js Test Runner"
-      - "Go Test"
-    icon: "material-symbols:thermostat-rounded"
-    themeColor: "#608f03"
-  - id: "Work-TechGroup-Database"
-    relatedTechs:
-      - "Supabase(Postgres)"
-      - "MySQL"
-      - "Drizzle ORM"
-    icon: "material-symbols:database-outline"
-    themeColor: "#03118f"
+      - "跨部门协作"
+      - "GitHub Pages"
+    icon: "material-symbols:handshake-outline-rounded"
+    themeColor: "#b65a3a"

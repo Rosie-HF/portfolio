@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @config "../../tailwind.config.ts";
 @plugin "@tailwindcss/typography";
+
 @theme inline {
   --text-xs--line-height: calc(1 / 0.75);
   --text-sm--line-height: calc(1.25 / 0.875);
@@ -40,14 +41,6 @@
   }
 }
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
   *,
   ::after,
@@ -61,27 +54,25 @@
 @layer base {
   :root {
     interpolate-size: allow-keywords;
-    --primary-color-50: 248 250 251;
-    --primary-color-100: 235 239 251;
-    --primary-color-200: 214 214 247;
-    --primary-color-300: 180 178 236;
-    --primary-color-400: 151 137 222;
-    --primary-color-500: 126 101 210;
-    --primary-color-600: 103 73 190;
-    --primary-color-700: 78 54 155;
-    --primary-color-800: 54 38 110;
-    --primary-color-900: 34 24 75;
-    --primary-color-1000: 13 10 40;
-    --accent-color: 255 168 8;
-    --accent-color-hex: #ffa808;
+    --primary-color-50: 245 247 244;
+    --primary-color-100: 232 237 233;
+    --primary-color-200: 208 219 214;
+    --primary-color-300: 173 192 184;
+    --primary-color-400: 123 151 143;
+    --primary-color-500: 84 116 109;
+    --primary-color-600: 61 92 86;
+    --primary-color-700: 45 72 68;
+    --primary-color-800: 31 56 54;
+    --primary-color-900: 21 40 40;
+    --primary-color-1000: 11 24 24;
+    --accent-color: 214 144 68;
+    --accent-color-hex: #d69044;
     --navbar-height: 10rem;
 
     --z-index-work-ribbon: calc(var(--z-index-work-thumbnail) * var(--z-index-gap));
     --z-index-work-thumbnail: calc(var(--z-index-base) * var(--z-index-gap));
-    /* --- Above 0 z-index --- */
     --z-index-base: 1;
     --z-index-gap: 10;
-    /* --- Below 0 z-index --- */
   }
 
   .highlight {
@@ -89,7 +80,7 @@
   }
 
   .highlight::after {
-    @apply absolute bottom-1 left-0 block w-full md:h-2 h-0.5 opacity-60 bg-accent transition-all rounded-sm  -z-10;
+    @apply absolute bottom-1 left-0 block w-full md:h-2 h-0.5 opacity-60 bg-accent transition-all rounded-sm -z-10;
     content: '';
     background-image: var(--globalHighlightTextureImage);
     background-size: 400px;
@@ -107,6 +98,7 @@
     0% {
       background-position: top left;
     }
+
     100% {
       background-position: bottom right;
     }

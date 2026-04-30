@@ -1,53 +1,22 @@
 import { defineCollection } from 'astro:content';
-import { z } from 'astro/zod'
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 
 const allowedTechs = [
-  'Astro.js',
-  'Axios',
-  'Bootstrap',
-  'changesets + tsup',
-  'Chart.js',
-  'ChatGPT AI',
-  'Cloudflare Pages',
-  'Cypress',
-  'Daisy UI',
-  'Drizzle ORM',
-  'Framer Motion',
-  'Gemini AI',
-  'GSAP',
-  'Gulp',
-  'Hugo',
-  'i18n',
-  'jQuery',
-  'Lighthouse CI',
-  'MySQL',
-  'Netlify CMS',
-  'Next(React)',
-  'Nuxt(Vue)',
-  'Pinia',
-  'Playwright',
-  'React',
-  'React Router',
-  'Sass',
-  'Shadcn UI',
-  'Supabase(Postgres)',
-  'Tailwind',
-  'TypeScript',
-  'Vercel',
-  'Vite',
-  'Vitest',
-  'Vue',
-  'Vue Router',
-  'Zod',
-  'vee-validate',
+  '医疗产品定义',
+  '数字疗法方案',
+  'EEG 生物反馈',
+  'ICD-11 / DSM-5',
+  '评估流程设计',
+  '治疗内容设计',
+  '报告体系设计',
+  '跨部门协作',
+  'R 统计分析',
+  '科研支持',
+  '实验设计',
+  '数据分析',
+  '培训与教学',
   'GitHub Pages',
-  'Netlify',
-  'Cloudflare Workers',
-  'Node.js Test Runner',
-  'Go',
-  'Go Test',
-  'WASM',
 ] as const;
 
 export const AllowedTechsEnum = z.enum(allowedTechs);
@@ -56,7 +25,6 @@ export type AllowedTechs = z.infer<typeof AllowedTechsEnum>;
 type Achievement = string | Achievement[];
 const AchievementSchema: z.ZodType<Achievement> = z.lazy(() => z.union([z.string(), z.array(AchievementSchema)]));
 
-// eslint-disable-next-line import/prefer-default-export
 export const collections = {
   project: defineCollection({
     loader: glob({ pattern: '**/[^_]*.mdx', base: './src/content/project' }),
@@ -109,7 +77,7 @@ export const collections = {
           title: z.string(),
           company: z.object({
             name: z.string(),
-            link: z.string(),
+            link: z.string().optional(),
           }),
           time: z.string(),
           achievements: z.array(AchievementSchema),
@@ -120,14 +88,14 @@ export const collections = {
         z.object({
           title: z.string(),
           subtitle: z.string(),
-          url: z.string(),
+          url: z.string().optional(),
         }),
       ),
       education: z.array(
         z.object({
           title: z.string(),
           time: z.string(),
-          description: z.string(),
+          description: z.string().optional(),
         }),
       ),
       skills: z.array(
@@ -152,12 +120,12 @@ export const collections = {
     schema: z
       .object({
         favicons: z.object({
-          "16": z.string(),
-          "32": z.string(),
-          "512": z.string(),
-          "android-chrome-192": z.string(),
-          "android-chrome-512": z.string(),
-          "apple-touch-icon": z.string(),
+          '16': z.string(),
+          '32': z.string(),
+          '512': z.string(),
+          'android-chrome-192': z.string(),
+          'android-chrome-512': z.string(),
+          'apple-touch-icon': z.string(),
         }),
         globalOgImage: z.object({
           url: z.string(),
@@ -197,9 +165,7 @@ export const collections = {
         website: {
           ...data.website,
           get copyright() {
-            return `© ${new Date().getFullYear()} ${
-              data.website.name
-            } All rights reserved. Theme <a class="underline" href='https://github.com/riceball-tw/letter'>Letter</a> licensed under MIT.`;
+            return `© ${new Date().getFullYear()} ${data.website.name}。基于 <a class="underline" href='https://github.com/riceball-tw/letter'>Letter</a> 主题构建。`;
           },
         },
       })),

@@ -7,7 +7,7 @@ import { languages, prefixDefaultLocale, defaultLocale } from './src/i18n/i18n.t
 
 // ENV In the Astro config file
 // https://docs.astro.build/en/guides/environment-variables/#in-the-astro-config-file
-const { BASE_URL } = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '');
+const { BASE_URL, SITE_URL } = loadEnv(process.env.NODE_ENV || 'development', process.cwd(), '');
 
 // Sanitize the BASE_URL from environment variables to ensure it starts and ends with a slash.
 // This avoids double slashes or missing slashes which can cause build errors or invalid URLs.
@@ -29,8 +29,8 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true,
   },
-  // !IMPORTANT: Set site url property with your own domain
-  site: 'https://riceball-tw.github.io',
+  // !IMPORTANT: Set site url property with your own domain or GitHub Pages origin
+  site: SITE_URL || 'https://rosie-hf.github.io',
   build: {
     inlineStylesheets: 'always',
   },
