@@ -2,7 +2,7 @@
 personalInfo:
   name: HE Fang
   role: Medical Health Product / Medical Content / Digital Therapeutics
-  description: M.S. in Psychology with a background in psychological research, neuroscience-related medical content design, product planning, and data analysis. Familiar with <span class="text-primary-900">ADHD, EEG and multi-parameter physiological signals, biofeedback, and the design of assessment and treatment workflows</span>, and able to connect medical logic, product requirements, and cross-functional collaboration to move core modules such as assessment, therapy, and reporting from planning into delivery.
+  description: M.S. in Psychology with a background in psychological research, neuroscience-related medical content design, product planning, and data analysis. Familiar with <span class="text-primary-900">ADHD, sleep and circadian rhythms, EEG and multi-parameter physiological signals, biofeedback, and assessment and therapy workflows</span>, with experience translating medical literature, disease mechanisms, physiological metrics, and clinical evidence into product functions, intervention plans, reports, and engineering requirements.
   socialLinks:
     - name: Email
       icon: simple-icons:microsoftoutlook
@@ -16,18 +16,20 @@ workExperience:
       name: Medical Technology Company
     time: 2025.07 - 2026.04
     achievements:
-      - Conducted competitive analysis and end-to-end research on multi-parameter biofeedback workflows, organizing feedback mechanisms, indication directions, core metrics, calculation methods, and interaction logic to clarify the product definition and software framework for later design and engineering work.
-      - Led the design of the assessment, therapy, and reporting modules, structured ICD-11 and DSM-5 disease labels, defined multi-dimensional evaluation workflows and scoring standards, and delivered demos, standardized therapy plans, and four report templates to establish the core business loop.
-      - Defined core metrics and algorithm rules for multi-parameter biofeedback, including composite indicators, threshold calculation, real-time feedback scores, therapy outcome scores, data sources, display rules, input-output parameters, storage logic, and audio playback rules that engineering teams could implement directly.
-      - Led the design of gamified psychotherapy and EEG feedback content, delivering 10 EEG biofeedback game concepts, 8 psychotherapy guidance scripts, and 4 breathing-training content packages with supporting audiovisual assets.
-      - Coordinated version acceptance and third-party delivery optimization, verifying data mappings, visual feedback logic, interface elements, and the final audio and video assets for therapy content.
-      - Established product documentation standards across indications, assessments, therapies, metrics, algorithms, interfaces, and content assets, improving requirement alignment across hardware, software, design, and external partners.
+      - Worked across a multi-parameter biofeedback system and a physiological-parameter system, covering medical and technical research, product scenario analysis, indication rationale, product planning, requirement breakdown, testing feedback, clinical-evaluation support, and project knowledge-base handoff.
+      - Led the medical product framework for the multi-parameter biofeedback system, defining assessment, training, therapy, and reporting modules, mapping medical mechanisms, physiological metrics, training goals, disease/symptom scenarios, and product functions, and producing software flows, backend requirements, disease labels, plan fields, and report-output rules.
+      - Built a multi-modal metrics and algorithm rule system across EEG, PPG/HRV, EMG, EDA, skin temperature, and accelerometer signals, defining raw values, feature values, core values, thresholds, game-driving values, therapy-effect values, threshold rules, real-time feedback scores, and therapy-outcome scoring.
+      - Led assessment and reporting design, organizing stress assessment, cognitive-behavioral paradigms, SNAP-IV, IVA-CPT workflows, result metrics, and report text, while building four report templates and interpretation rules for EEG, HRV, and other core indicators.
+      - Led feedback-game and psychotherapy content design, including 20 EEG feedback game concepts, 10 detailed game scripts with real-time metric mappings, 8 psychotherapy guidance scripts, 4 breathing-training scripts, 16 therapy/training asset folders, and 225 audio/video assets, while reviewing third-party demos and edited deliverables across iterations.
+      - Supported productization of actigraphy metrics for the physiological-parameter system, organizing sleep-wake, daytime activity, sleep continuity and fragmentation, sleep architecture, cosinor analysis, non-parametric circadian rhythm analysis, and periodogram metrics into calculation logic, reference ranges, medical interpretations, report text, and variable mappings.
+      - Contributed to departmental content and research support, including 17 WeChat articles, ADHD review literature search and drafting, research on eye tracking, cerebral oxygen/fNIRS, PSG, facial-feature-based OSA detection, closed-loop tVNS, and CLAS, plus evidence summaries for biofeedback indications and comparable devices.
     techs:
-      - Medical product definition
-      - EEG biofeedback
-      - Assessment workflow design
-      - Therapeutic content design
+      - Medical product translation
+      - Multi-parameter biofeedback
+      - Metric and algorithm rules
+      - Sleep rhythm analysis
       - Reporting system design
+      - Clinical evaluation support
       - Cross-functional collaboration
   - title: Research Assistant
     company:
@@ -57,6 +59,8 @@ workExperience:
       - Training & instruction
       - R statistical analysis
 achievements:
+  - title: Medical Product Planning and Content Assets
+    subtitle: Led medical product framework, metric rules, assessment paradigms, feedback games, psychotherapy content, and reporting design for a multi-parameter biofeedback system, including 225 therapy/training audio and video assets.
   - title: Papers and Manuscripts
     subtitle: One first-author paper under review, one first-author manuscript in progress, one co-authored paper accepted, and one conference paper.
   - title: Scholarships and Qualifications
@@ -69,11 +73,12 @@ education:
     time: 2016.09 - 2020.06
 skills:
   - developments:
-      - "Medical content and product definition: structure product plans around indications, feedback mechanisms, core metrics, interaction logic, and software frameworks."
-      - "Assessment and therapy design: build the core loop across assessment, therapy, and reporting, including multi-dimensional workflows, scoring standards, and standardized intervention plans."
-      - "Metrics and rule systems: define composite indicators, thresholds, scoring logic, display rules, input-output parameters, and data storage requirements."
-      - "Documentation and standardization: produce requirement docs, metric definitions, report templates, disease label specifications, scripts, and content-asset documentation."
+      - "Medical product translation: turn medical literature, disease mechanisms, physiological metrics, and clinical evidence into product functions, intervention plans, reports, and engineering requirements."
+      - "Assessment and therapy design: design assessment, feedback, psychotherapy, and reporting modules, including multi-dimensional workflows, scoring standards, and standardized intervention plans."
+      - "Metrics and rule systems: define composite indicators, thresholds, scoring logic, display rules, input-output parameters, data storage requirements, and audio playback logic."
+      - "Reporting and medical interpretation: translate EEG, HRV, and actigraphy sleep/rhythm metrics into report text, chart structures, variable mappings, and result interpretation."
+      - "Documentation and standardization: produce requirement docs, metric definitions, report templates, disease label specifications, scripts, asset standards, and knowledge-base handoff materials."
       - "Research and data analysis: apply R for statistical analysis and support literature review, competitive analysis, experimental design, data processing, and interpretation."
-      - "Tools and domain knowledge: R, MATLAB, Python (basic), SQL (basic), EEG, ERPs, fNIRS, EMG, PPG, and biofeedback."
+      - "Tools and domain knowledge: R, MATLAB, Python (basic), SQL (basic), EEG, ERPs, fNIRS, EMG, EDA, PPG/HRV, actigraphy, and biofeedback."
 links:
   - mySite: []

@@ -9,6 +9,7 @@ const englishTechLabels: Record<AllowedTechs, string> = {
   '评估流程设计': 'Assessment workflow design',
   '治疗内容设计': 'Therapeutic content design',
   '报告体系设计': 'Reporting system design',
+  '睡眠节律分析': 'Sleep rhythm analysis',
   '跨部门协作': 'Cross-functional collaboration',
   'R 统计分析': 'R statistical analysis',
   '科研支持': 'Research support',

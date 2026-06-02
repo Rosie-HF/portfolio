@@ -47,6 +47,7 @@ techGroups:
       - "ICD-11 / DSM-5"
       - "评估流程设计"
       - "治疗内容设计"
+      - "睡眠节律分析"
     icon: "material-symbols:neurology-outline-rounded"
     themeColor: "#457b69"
   - id: "Work-TechGroup-Research"
