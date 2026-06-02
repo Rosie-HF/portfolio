@@ -12,10 +12,10 @@ export default {
         lineHeight: false,
       },
       settings: {
-        fontSizeMin: 1.125,
-        fontSizeMax: 1.25,
+        fontSizeMin: 1,
+        fontSizeMax: 1.0625,
         ratioMin: 1.125,
-        ratioMax: 1.2,
+        ratioMax: 1.18,
         screenMin: 20,
         screenMax: 96,
         unit: 'rem',

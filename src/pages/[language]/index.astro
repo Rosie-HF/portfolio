@@ -32,14 +32,14 @@ export function getStaticPaths() {
       <div class="px-4 grid gap-10 lg:grid-cols-[1.4fr_0.8fr] items-start">
         <div class="space-y-8">
           <div class="space-y-5">
-            <p class="uppercase tracking-[0.2em] text-sm text-primary-600">{t('Home-Eyebrow')}</p>
-            <h1 class="text-4xl md:text-7xl font-semibold leading-tight">
+            <p class="uppercase tracking-[0.14em] text-[length:var(--font-size-label)] text-primary-600">{t('Home-Eyebrow')}</p>
+            <h1 class="text-[length:var(--font-size-display)] font-semibold leading-none">
               {t('Hero-Greeting', { name: displayName })}
             </h1>
-            <p class="max-w-4xl text-lg md:text-2xl font-serif text-primary-700">
+            <p class="max-w-4xl text-[length:var(--font-size-lead)] leading-relaxed font-serif text-primary-700">
               {t('Hero-Intro')}
             </p>
-            <p class="max-w-3xl text-base md:text-lg text-primary-600">
+            <p class="max-w-3xl text-[length:var(--font-size-ui)] leading-relaxed text-primary-600">
               <Fragment
                 set:html={DOMPurify.sanitize(
                   t('Hero-CTA', {
@@ -52,19 +52,19 @@ export function getStaticPaths() {
           </div>
 
           {resume && (
-            <div class="rounded-[2rem] border border-primary-200 bg-white/80 p-6 md:p-8 shadow-[0_20px_60px_rgba(41,74,72,0.08)] backdrop-blur">
+            <div class="rounded-2xl border border-primary-200 bg-white/80 p-5 md:p-6 shadow-[0_20px_60px_rgba(41,74,72,0.08)] backdrop-blur">
               <div class="grid gap-4 md:grid-cols-3">
                 <div>
-                  <p class="text-sm uppercase tracking-[0.16em] text-primary-500">{t('Home-Summary-1-Label')}</p>
-                  <p class="mt-2 text-lg font-medium">{t('Home-Summary-1-Value')}</p>
+                  <p class="text-[length:var(--font-size-label)] uppercase tracking-[0.12em] text-primary-500">{t('Home-Summary-1-Label')}</p>
+                  <p class="mt-2 text-[length:var(--font-size-ui)] font-medium leading-snug">{t('Home-Summary-1-Value')}</p>
                 </div>
                 <div>
-                  <p class="text-sm uppercase tracking-[0.16em] text-primary-500">{t('Home-Summary-2-Label')}</p>
-                  <p class="mt-2 text-lg font-medium">{t('Home-Summary-2-Value')}</p>
+                  <p class="text-[length:var(--font-size-label)] uppercase tracking-[0.12em] text-primary-500">{t('Home-Summary-2-Label')}</p>
+                  <p class="mt-2 text-[length:var(--font-size-ui)] font-medium leading-snug">{t('Home-Summary-2-Value')}</p>
                 </div>
                 <div>
-                  <p class="text-sm uppercase tracking-[0.16em] text-primary-500">{t('Home-Summary-3-Label')}</p>
-                  <p class="mt-2 text-lg font-medium">{t('Home-Summary-3-Value')}</p>
+                  <p class="text-[length:var(--font-size-label)] uppercase tracking-[0.12em] text-primary-500">{t('Home-Summary-3-Label')}</p>
+                  <p class="mt-2 text-[length:var(--font-size-ui)] font-medium leading-snug">{t('Home-Summary-3-Value')}</p>
                 </div>
               </div>
             </div>
@@ -72,19 +72,19 @@ export function getStaticPaths() {
         </div>
 
         <div class="grid gap-4">
-          <div class="rounded-[2rem] bg-primary-900 text-primary-50 p-6 md:p-8">
-            <p class="text-sm uppercase tracking-[0.16em] text-primary-300">{t('Home-Spotlight-Label')}</p>
-            <ul class="mt-5 space-y-4 text-lg">
+          <div class="rounded-2xl bg-primary-900 text-primary-50 p-5 md:p-6">
+            <p class="text-[length:var(--font-size-label)] uppercase tracking-[0.12em] text-primary-300">{t('Home-Spotlight-Label')}</p>
+            <ul class="mt-5 space-y-3 text-[length:var(--font-size-ui)] leading-relaxed">
               <li>{t('Home-Spotlight-1')}</li>
               <li>{t('Home-Spotlight-2')}</li>
               <li>{t('Home-Spotlight-3')}</li>
               <li>{t('Home-Spotlight-4')}</li>
             </ul>
           </div>
-          <div class="rounded-[2rem] border border-primary-200 bg-[#f7f1e8] p-6 md:p-8">
-            <p class="text-sm uppercase tracking-[0.16em] text-[#8d6a2f]">{t('Home-Profile-Label')}</p>
+          <div class="rounded-2xl border border-primary-200 bg-[#f7f1e8] p-5 md:p-6">
+            <p class="text-[length:var(--font-size-label)] uppercase tracking-[0.12em] text-[#8d6a2f]">{t('Home-Profile-Label')}</p>
             <div
-              class="mt-4 text-base leading-8 text-primary-800 font-serif"
+              class="mt-4 text-[length:var(--font-size-ui)] leading-relaxed text-primary-800 font-serif"
               set:html={DOMPurify.sanitize(resume?.personalInfo.description || '')}
             ></div>
           </div>
@@ -94,21 +94,21 @@ export function getStaticPaths() {
 
     <section class="mb-20 container mx-auto px-4">
       <div class="grid gap-6 md:grid-cols-4">
-        <div class="rounded-[1.5rem] border border-primary-200 bg-white p-6">
-          <p class="text-sm uppercase tracking-[0.16em] text-primary-500">{t('Home-Highlights-1-Title')}</p>
-          <p class="mt-3 text-lg text-primary-800">{t('Home-Highlights-1-Description')}</p>
+        <div class="rounded-2xl border border-primary-200 bg-white p-5">
+          <p class="text-[length:var(--font-size-label)] uppercase tracking-[0.12em] text-primary-500">{t('Home-Highlights-1-Title')}</p>
+          <p class="mt-3 text-[length:var(--font-size-ui)] leading-relaxed text-primary-800">{t('Home-Highlights-1-Description')}</p>
         </div>
-        <div class="rounded-[1.5rem] border border-primary-200 bg-white p-6">
-          <p class="text-sm uppercase tracking-[0.16em] text-primary-500">{t('Home-Highlights-2-Title')}</p>
-          <p class="mt-3 text-lg text-primary-800">{t('Home-Highlights-2-Description')}</p>
+        <div class="rounded-2xl border border-primary-200 bg-white p-5">
+          <p class="text-[length:var(--font-size-label)] uppercase tracking-[0.12em] text-primary-500">{t('Home-Highlights-2-Title')}</p>
+          <p class="mt-3 text-[length:var(--font-size-ui)] leading-relaxed text-primary-800">{t('Home-Highlights-2-Description')}</p>
         </div>
-        <div class="rounded-[1.5rem] border border-primary-200 bg-white p-6">
-          <p class="text-sm uppercase tracking-[0.16em] text-primary-500">{t('Home-Highlights-3-Title')}</p>
-          <p class="mt-3 text-lg text-primary-800">{t('Home-Highlights-3-Description')}</p>
+        <div class="rounded-2xl border border-primary-200 bg-white p-5">
+          <p class="text-[length:var(--font-size-label)] uppercase tracking-[0.12em] text-primary-500">{t('Home-Highlights-3-Title')}</p>
+          <p class="mt-3 text-[length:var(--font-size-ui)] leading-relaxed text-primary-800">{t('Home-Highlights-3-Description')}</p>
         </div>
-        <div class="rounded-[1.5rem] border border-primary-200 bg-white p-6">
-          <p class="text-sm uppercase tracking-[0.16em] text-primary-500">{t('Home-Highlights-4-Title')}</p>
-          <p class="mt-3 text-lg text-primary-800">{t('Home-Highlights-4-Description')}</p>
+        <div class="rounded-2xl border border-primary-200 bg-white p-5">
+          <p class="text-[length:var(--font-size-label)] uppercase tracking-[0.12em] text-primary-500">{t('Home-Highlights-4-Title')}</p>
+          <p class="mt-3 text-[length:var(--font-size-ui)] leading-relaxed text-primary-800">{t('Home-Highlights-4-Description')}</p>
         </div>
       </div>
     </section>
@@ -116,8 +116,8 @@ export function getStaticPaths() {
     <section class="mb-24 container mx-auto px-4">
       <div class="flex flex-wrap items-end justify-between gap-6 mb-8">
         <div>
-          <p class="text-sm uppercase tracking-[0.16em] text-primary-500">{t('NewestWork-1')}</p>
-          <h2 class="text-3xl md:text-5xl font-semibold mt-2">{t('Home-FeatureSection-Title')}</h2>
+          <p class="text-[length:var(--font-size-label)] uppercase tracking-[0.12em] text-primary-500">{t('NewestWork-1')}</p>
+          <h2 class="text-[length:var(--font-size-section-title)] font-semibold mt-2 leading-tight">{t('Home-FeatureSection-Title')}</h2>
         </div>
         <a
           class="rounded-full border border-primary-300 px-5 py-3 hover:bg-primary-100 transition-colors"
@@ -129,13 +129,13 @@ export function getStaticPaths() {
 
       <ul class="grid gap-6 lg:grid-cols-3">
         {featuredProjects.map((project) => (
-          <li class="rounded-[2rem] border border-primary-200 bg-white p-6 md:p-8 shadow-[0_18px_60px_rgba(41,74,72,0.06)]">
-            <p class="text-sm uppercase tracking-[0.16em] text-primary-500">{project.data.publishDate.getFullYear()}</p>
-            <h3 class="mt-3 text-2xl font-semibold">{project.data.title}</h3>
-            <p class="mt-4 text-lg font-serif text-primary-700">{project.data.description}</p>
+          <li class="rounded-2xl border border-primary-200 bg-white p-5 md:p-6 shadow-[0_18px_60px_rgba(41,74,72,0.06)]">
+            <p class="text-[length:var(--font-size-label)] uppercase tracking-[0.12em] text-primary-500">{project.data.publishDate.getFullYear()}</p>
+            <h3 class="mt-3 text-[length:var(--font-size-card-title)] font-semibold leading-snug">{project.data.title}</h3>
+            <p class="mt-4 text-[length:var(--font-size-ui)] leading-relaxed font-serif text-primary-700">{project.data.description}</p>
             <ul class="mt-6 flex flex-wrap gap-2">
               {project.data.tech.map((tech) => (
-                <li class="rounded-full bg-primary-100 px-3 py-1 text-sm text-primary-700">{getTechLabel(tech, currentLocale)}</li>
+                <li class="rounded-full bg-primary-100 px-3 py-1 text-[length:var(--font-size-caption)] text-primary-700">{getTechLabel(tech, currentLocale)}</li>
               ))}
             </ul>
           </li>

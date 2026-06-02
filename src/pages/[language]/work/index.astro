@@ -149,7 +149,7 @@ export function getStaticPaths() {
   <div class="p-4">
     <main class="min-h-screen">
       <Banner>
-        <h1 class="text-3xl md:text-5xl font-medium">{t('Work-1')}<br />{t('Work-2')}</h1>
+        <h1 class="text-[length:var(--font-size-section-title)] font-medium leading-tight">{t('Work-1')}<br />{t('Work-2')}</h1>
       </Banner>
 
       <section class="container mx-auto flex flex-col gap-16">
@@ -161,7 +161,7 @@ export function getStaticPaths() {
               <button
                 data-group-id={techGroup.id}
                 style={`--themeColor: ${techGroup.themeColor};`}
-                class="hover:border-(--themeColor)/60 hover:bg-(--themeColor)/10 cursor-pointer border-2 py-1 md:py-2 px-3 md:px-4 border-primary-50 rounded-full text-md inline-flex items-center gap-4 transition"
+                class="hover:border-(--themeColor)/60 hover:bg-(--themeColor)/10 cursor-pointer border-2 py-1.5 px-3 md:px-4 border-primary-50 rounded-full text-[length:var(--font-size-ui)] inline-flex items-center gap-3 transition"
                 type="button"
               >
                 <Icon class="pointer-events-none size-8 md:size-10" data-group-icon size={32} name={techGroup.icon} />
@@ -176,7 +176,7 @@ export function getStaticPaths() {
             <li>
               <button
                 data-tech-id={tech}
-                class="cursor-pointer border-2 py-1 md:py-2 px-2 md:px-4 border-primary-50 rounded-full text-xs lg:text-sm"
+                class="cursor-pointer border-2 py-1 px-2.5 md:px-3 border-primary-50 rounded-full text-[length:var(--font-size-caption)]"
                 type="button"
               >
                 {getTechLabel(tech, currentLocale)}
@@ -244,7 +244,7 @@ export function getStaticPaths() {
                     return (
                       <div
                         style="aspect-ratio: 4 / 3;"
-                        class="w-full text-center bg-primary-100 text-primary-600 flex justify-center items-center z-(--z-index-work-thumbnail) relative text-4xl font-bold"
+                        class="w-full text-center bg-primary-100 text-primary-600 flex justify-center items-center z-(--z-index-work-thumbnail) relative text-[length:var(--font-size-card-title)] font-bold leading-tight p-8"
                       >
                         {project.data.title}
                       </div>
@@ -252,18 +252,18 @@ export function getStaticPaths() {
                   })()}
                 </div>
 
-                <h3 class="text-lg font-medium">
+                <h3 class="text-[length:var(--font-size-card-title)] font-medium leading-snug">
                   {project.data?.link?.url ? <a href={project.data.link.url}>{project.data.title}</a> : <span>{project.data.title}</span>}
                   <time class="opacity-60"> - {project.data.publishDate.getFullYear()}</time>
                 </h3>
 
-                <p class="text-lg mb-4 font-serif">{project.data.description}</p>
+                <p class="text-[length:var(--font-size-ui)] leading-relaxed mb-4 font-serif">{project.data.description}</p>
 
                 <div class="flex flex-wrap items-center justify-between gap-4">
                   {project.data.tech && (
                     <ul class="flex flex-wrap gap-2 xl:w-1/2 w-auto">
                       {project.data.tech.map((tech) => (
-                        <li class="border-2 py-1 md:py-2 px-2 md:px-4 border-primary-50 rounded-full text-xs lg:text-sm">
+                        <li class="border-2 py-1 px-2.5 md:px-3 border-primary-50 rounded-full text-[length:var(--font-size-caption)]">
                           {getTechLabel(tech, currentLocale)}
                         </li>
                       ))}

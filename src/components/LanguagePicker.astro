@@ -18,14 +18,14 @@ const hasMultipleLanguages = Object.keys(languages).length > 1;
         return isCurrentLocale ? (
           <span
             aria-current="page"
-            class="inline-flex min-w-12 items-center justify-center rounded-full bg-primary-900 px-4 py-2 text-sm font-semibold text-primary-50"
+            class="inline-flex min-w-12 items-center justify-center rounded-full bg-primary-900 px-4 py-2 text-[length:var(--font-size-label)] font-semibold text-primary-50"
             title={name}
           >
             {shortLabel}
           </span>
         ) : (
           <a
-            class="inline-flex min-w-12 items-center justify-center rounded-full px-4 py-2 text-sm font-semibold text-primary-700 transition-colors hover:bg-primary-100 hover:text-primary-900"
+            class="inline-flex min-w-12 items-center justify-center rounded-full px-4 py-2 text-[length:var(--font-size-label)] font-semibold text-primary-700 transition-colors hover:bg-primary-100 hover:text-primary-900"
             href={changeLanguage(key as LanguageKey, Astro.url.pathname)}
             title={name}
           >

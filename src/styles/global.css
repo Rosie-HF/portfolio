@@ -3,19 +3,19 @@
 @plugin "@tailwindcss/typography";
 
 @theme inline {
-  --text-xs--line-height: calc(1 / 0.75);
-  --text-sm--line-height: calc(1.25 / 0.875);
-  --text-base--line-height: calc(1.5 / 1);
-  --text-lg--line-height: calc(1.75 / 1.125);
-  --text-xl--line-height: calc(1.75 / 1.25);
-  --text-2xl--line-height: calc(2 / 1.5);
-  --text-3xl--line-height: calc(2.25 / 1.875);
-  --text-4xl--line-height: calc(2.5 / 2.25);
-  --text-5xl--line-height: calc(3 / 2.25);
-  --text-6xl--line-height: calc(3 / 2.25);
-  --text-7xl--line-height: calc(3 / 2.25);
-  --text-8xl--line-height: calc(3 / 2.25);
-  --text-9xl--line-height: calc(3 / 2.25);
+  --text-xs--line-height: 1.45;
+  --text-sm--line-height: 1.5;
+  --text-base--line-height: 1.65;
+  --text-lg--line-height: 1.6;
+  --text-xl--line-height: 1.5;
+  --text-2xl--line-height: 1.35;
+  --text-3xl--line-height: 1.25;
+  --text-4xl--line-height: 1.16;
+  --text-5xl--line-height: 1.08;
+  --text-6xl--line-height: 1.04;
+  --text-7xl--line-height: 1;
+  --text-8xl--line-height: 1;
+  --text-9xl--line-height: 1;
 
   --color-primary-50: oklch(98.5% 0.001 106.423);
   --color-primary-100: oklch(97% 0.001 106.424);
@@ -68,11 +68,25 @@
     --accent-color: 214 144 68;
     --accent-color-hex: #d69044;
     --navbar-height: 10rem;
+    --font-size-body: clamp(1rem, 0.98rem + 0.1vw, 1.0625rem);
+    --font-size-caption: clamp(0.75rem, 0.74rem + 0.05vw, 0.8125rem);
+    --font-size-label: clamp(0.8125rem, 0.8rem + 0.08vw, 0.875rem);
+    --font-size-ui: clamp(0.9375rem, 0.92rem + 0.08vw, 1rem);
+    --font-size-lead: clamp(1.125rem, 1.03rem + 0.35vw, 1.375rem);
+    --font-size-card-title: clamp(1.25rem, 1.16rem + 0.28vw, 1.5rem);
+    --font-size-section-title: clamp(1.875rem, 1.5rem + 1.2vw, 2.75rem);
+    --font-size-display: clamp(2.5rem, 1.95rem + 2vw, 3.5rem);
 
     --z-index-work-ribbon: calc(var(--z-index-work-thumbnail) * var(--z-index-gap));
     --z-index-work-thumbnail: calc(var(--z-index-base) * var(--z-index-gap));
     --z-index-base: 1;
     --z-index-gap: 10;
+  }
+
+  body {
+    font-size: var(--font-size-body);
+    line-height: 1.65;
+    text-size-adjust: 100%;
   }
 
   .highlight {
