@@ -22,14 +22,14 @@ export function getStaticPaths() {
 <Base title={t('Navbar-4')}>
   <main class="md:min-h-screen min-h-auto">
     <Banner>
-      <h1 class="text-[length:var(--font-size-section-title)] font-semibold leading-tight px-4">
+      <h1 class="text-[length:var(--font-size-display)] font-semibold leading-tight px-4">
         { t('Navbar-4') }
       </h1>
     </Banner>
 
       <section class="mb-16 container mx-auto">
         <h2 class="sr-only">{t('NewestWork-1')}</h2>
-        <div class="flex flex-col mx-4">
+        <div class="mx-4 flex max-w-6xl flex-col">
           
         {
           localeRelatedFaqs.map(async (faq) => {

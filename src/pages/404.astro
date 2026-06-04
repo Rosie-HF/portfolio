@@ -14,8 +14,8 @@ export function getStaticPaths() {
 
 <Base title={t('404-1')}>
   <main class="text-center min-h-screen flex items-center justify-center flex-col">
-    <h1 class="text-8xl font-black">404</h1>
-    <p class="text-lg mb-8">{t('404-1')}</p>
+    <h1 class="text-[length:var(--font-size-display)] font-black">404</h1>
+    <p class="text-[length:var(--font-size-ui)] mb-8">{t('404-1')}</p>
     <a class="underline" href={getLocalePath(Astro.currentLocale as LanguageKey || defaultLocale, '/')}>{t('404-2')}</a>
   </main>
 </Base>

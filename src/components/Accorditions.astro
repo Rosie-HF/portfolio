@@ -7,8 +7,8 @@ const { title } = Astro.props;
 ---
 
 <details>
-  <summary class="hover:bg-primary-50 px-4 -mx-4 border-t-2 border-primary-100 py-4 cursor-pointer text-[length:var(--font-size-card-title)] font-medium leading-snug">{ title }</summary>
-  <div style="max-width: 70ch" class="prose pb-4 text-[length:var(--font-size-ui)] leading-relaxed font-serif">
+  <summary class="hover:bg-primary-50 px-4 -mx-4 border-t-2 border-primary-100 py-4 cursor-pointer text-[length:var(--font-size-title)] font-medium leading-snug">{ title }</summary>
+  <div class="faq-content prose max-w-none pb-5 text-[length:var(--font-size-ui)] leading-relaxed">
     <slot />
   </div>
 </details>
@@ -26,5 +26,13 @@ details::details-content {
 
 details[open]::details-content {
   height: auto;
+}
+
+.faq-content :global(p) {
+  max-width: 96ch;
+}
+
+.faq-content :global(ul) {
+  max-width: 104ch;
 }
 </style>

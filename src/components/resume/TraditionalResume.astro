@@ -32,11 +32,11 @@ function renderAchievements(list: Achievement): string {
 ---
 
 <div class="container mx-auto flex justify-center px-4 md:px-0">
-  <div class="cv-traditional bg-white shadow-xl print:shadow-none font-sans text-gray-900 leading-snug text-sm">
+  <div class="cv-traditional bg-white shadow-xl print:shadow-none text-[length:var(--font-size-ui)] text-gray-900 leading-snug">
     <header class="text-center border-b-2 border-current pb-4 mb-4">
-      <h1 class="text-2xl md:text-3xl font-bold uppercase tracking-wider mb-2">{resume.personalInfo.name}</h1>
+      <h1 class="text-[length:var(--font-size-title)] font-bold uppercase tracking-wider mb-2">{resume.personalInfo.name}</h1>
 
-      <div class="flex flex-wrap justify-center items-center gap-x-3 gap-y-1 text-xs">
+      <div class="flex flex-wrap justify-center items-center gap-x-3 gap-y-1 text-[length:var(--font-size-caption)]">
         {resume.personalInfo.socialLinks.map((link, index) => (
           <div class="flex items-center gap-1">
             {index > 0 && <span class="text-gray-400 hidden sm:inline mr-2">/</span>}
@@ -50,29 +50,29 @@ function renderAchievements(list: Achievement): string {
     </header>
 
     {resume.personalInfo.description && (
-      <section class="mb-5 font-serif text-xs">
+      <section class="mb-5 text-[length:var(--font-size-caption)]">
         <div set:html={DOMPurify.sanitize(resume.personalInfo.description)}></div>
       </section>
     )}
 
     <section class="mb-5">
-      <h2 class="text-sm font-bold uppercase border-b border-current mb-3 pb-1 tracking-widest text-gray-900">{t('Resume-2')}</h2>
+      <h2 class="text-[length:var(--font-size-ui)] font-bold uppercase border-b border-current mb-3 pb-1 tracking-widest text-gray-900">{t('Resume-2')}</h2>
       <div class="space-y-4">
         {resume.workExperience.map((experience) => (
           <div>
             <div class="flex flex-col gap-2 sm:flex-row sm:justify-between items-start sm:items-baseline mb-1.5">
-              <div class="text-sm">
+              <div class="text-[length:var(--font-size-ui)]">
                 <span class="font-bold text-gray-900">{experience.title}</span>
                 <span class="text-gray-500 mx-1">-</span>
                 <span class="font-semibold text-gray-800">
                   {experience.company.link ? <a class="hover:underline" href={experience.company.link}>{experience.company.name}</a> : <span>{experience.company.name}</span>}
                 </span>
               </div>
-              <span class="text-xs text-gray-600 font-medium whitespace-nowrap mt-0.5 sm:mt-0">{experience.time}</span>
+              <span class="text-[length:var(--font-size-caption)] text-gray-600 font-medium whitespace-nowrap mt-0.5 sm:mt-0">{experience.time}</span>
             </div>
-            <ul class="font-serif list-disc list-outside ml-5 text-xs space-y-1 text-gray-800" set:html={DOMPurify.sanitize(renderAchievements(experience.achievements))}></ul>
+            <ul class="list-disc list-outside ml-5 text-[length:var(--font-size-caption)] space-y-1 text-gray-800" set:html={DOMPurify.sanitize(renderAchievements(experience.achievements))}></ul>
             {experience.techs.length > 0 && (
-              <div class="text-xs text-gray-600 mt-1.5">
+              <div class="text-[length:var(--font-size-caption)] text-gray-600 mt-1.5">
                 <span class="font-semibold text-gray-700">{t('Resume-TechLabel')}:</span>
                 {' '}
                 {experience.techs.join(', ')}
@@ -84,23 +84,23 @@ function renderAchievements(list: Achievement): string {
     </section>
 
     <section class="mb-5">
-      <h2 class="text-sm font-bold uppercase border-b border-current mb-3 pb-1 tracking-widest text-gray-900">{t('Resume-4')}</h2>
+      <h2 class="text-[length:var(--font-size-ui)] font-bold uppercase border-b border-current mb-3 pb-1 tracking-widest text-gray-900">{t('Resume-4')}</h2>
       <div class="space-y-3">
         {resume.education.map((education) => (
           <div>
             <div class="flex flex-col gap-2 sm:flex-row sm:justify-between items-start sm:items-baseline mb-0.5">
-              <h3 class="text-sm font-bold text-gray-900">{education.title}</h3>
-              <span class="text-xs text-gray-600 font-medium whitespace-nowrap">{education.time}</span>
+              <h3 class="text-[length:var(--font-size-ui)] font-bold text-gray-900">{education.title}</h3>
+              <span class="text-[length:var(--font-size-caption)] text-gray-600 font-medium whitespace-nowrap">{education.time}</span>
             </div>
-            {education.description && <div class="font-serif text-xs text-gray-800" set:html={DOMPurify.sanitize(education.description)}></div>}
+            {education.description && <div class="text-[length:var(--font-size-caption)] text-gray-800" set:html={DOMPurify.sanitize(education.description)}></div>}
           </div>
         ))}
       </div>
     </section>
 
     <section class="mb-5">
-      <h2 class="text-sm font-bold uppercase border-b border-current mb-3 pb-1 tracking-widest text-gray-900">{t('Resume-5')}</h2>
-      <div class="text-xs text-gray-800">
+      <h2 class="text-[length:var(--font-size-ui)] font-bold uppercase border-b border-current mb-3 pb-1 tracking-widest text-gray-900">{t('Resume-5')}</h2>
+      <div class="text-[length:var(--font-size-caption)] text-gray-800">
         <ul class="list-disc list-outside ml-5 space-y-1">
           {resume.skills.map((skill) => (
             <Fragment>
@@ -113,12 +113,12 @@ function renderAchievements(list: Achievement): string {
 
     {resume.achievements.length > 0 && (
       <section class="mb-5">
-        <h2 class="text-sm font-bold uppercase border-b border-current mb-3 pb-1 tracking-widest text-gray-900">{t('Resume-3')}</h2>
+        <h2 class="text-[length:var(--font-size-ui)] font-bold uppercase border-b border-current mb-3 pb-1 tracking-widest text-gray-900">{t('Resume-3')}</h2>
         <div class="space-y-2">
           {resume.achievements.map((achievement) => (
             <div class="flex flex-col gap-1 sm:justify-between items-start sm:items-baseline">
-              <h3 class="text-xs font-bold text-gray-900">{achievement.title}</h3>
-              {achievement.url ? <div class="text-xs text-gray-700"><a class="hover:underline" href={achievement.url}>{achievement.subtitle}</a></div> : <div class="text-xs text-gray-700">{achievement.subtitle}</div>}
+              <h3 class="text-[length:var(--font-size-caption)] font-bold text-gray-900">{achievement.title}</h3>
+              {achievement.url ? <div class="text-[length:var(--font-size-caption)] text-gray-700"><a class="hover:underline" href={achievement.url}>{achievement.subtitle}</a></div> : <div class="text-[length:var(--font-size-caption)] text-gray-700">{achievement.subtitle}</div>}
             </div>
           ))}
         </div>
@@ -127,8 +127,8 @@ function renderAchievements(list: Achievement): string {
 
     {resume.links.length > 0 && (
       <section class="mb-5">
-        <h2 class="text-sm font-bold uppercase border-b border-current mb-3 pb-1 tracking-widest text-gray-900">{t('Resume-7')}</h2>
-        <div class="text-xs text-gray-800">
+        <h2 class="text-[length:var(--font-size-ui)] font-bold uppercase border-b border-current mb-3 pb-1 tracking-widest text-gray-900">{t('Resume-7')}</h2>
+        <div class="text-[length:var(--font-size-caption)] text-gray-800">
           {resume.links.map((section) => (
             <ul class="list-disc list-outside ml-5 space-y-1">
               {section.mySite.map((site) => (
@@ -144,7 +144,7 @@ function renderAchievements(list: Achievement): string {
       </section>
     )}
 
-    <div class="mt-8 text-xs text-gray-400 flex justify-between border-t border-gray-200 pt-3 print:hidden">
+    <div class="mt-8 text-[length:var(--font-size-caption)] text-gray-400 flex justify-between border-t border-gray-200 pt-3 print:hidden">
       <p>{t('Resume-9')}</p>
       <p>{t('Resume-10')} {currentTime}</p>
     </div>

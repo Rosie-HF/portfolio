@@ -59,7 +59,7 @@ const hasSocialLinks = resume.personalInfo.socialLinks.length > 0;
         </div>
 
         <div class="md:col-start-2 md:col-span-3 relative">
-          <blockquote class="text-primary-500 quote font-serif" set:html={DOMPurify.sanitize(resume.personalInfo.description)}></blockquote>
+          <blockquote class="text-primary-500 quote" set:html={DOMPurify.sanitize(resume.personalInfo.description)}></blockquote>
         </div>
       </div>
       <hr class="border-b">
@@ -78,7 +78,7 @@ const hasSocialLinks = resume.personalInfo.socialLinks.length > 0;
                     <h3 class="font-medium category-item-title">{experience.title}</h3>
                     <ul class="flex flex-wrap gap-x-4 text-primary-600">
                       <li>
-                        <time class="font-mono work-tag">{experience.time}</time>
+                        <time class="work-tag">{experience.time}</time>
                       </li>
                       <li>
                         <span class="work-tag">
@@ -87,9 +87,9 @@ const hasSocialLinks = resume.personalInfo.socialLinks.length > 0;
                       </li>
                     </ul>
                   </div>
-                  <ul class="list-disc list-inside font-serif" set:html={DOMPurify.sanitize(renderAchievements(experience.achievements))}></ul>
+                  <ul class="list-disc list-inside" set:html={DOMPurify.sanitize(renderAchievements(experience.achievements))}></ul>
                 </div>
-                <ul class="flex flex-wrap gap-2 text-xs">
+                <ul class="flex flex-wrap gap-2 text-[length:var(--font-size-caption)]">
                   {
                     experience.techs.map((tech) => (
                       <li class="border border-primary-100 bg-primary-50 text-primary-800 rounded-md inline-block p-1 px-2 whitespace-nowrap work-tag">
@@ -132,8 +132,8 @@ const hasSocialLinks = resume.personalInfo.socialLinks.length > 0;
           resume.education.map((education) => (
             <div class="md:col-start-2 md:col-span-3">
               <h3 class="font-medium category-item-title">{education.title}</h3>
-              <time class="font-mono work-tag text-primary-600">{education.time}</time>
-              {education.description && <p class="font-serif" set:html={DOMPurify.sanitize(education.description)}></p>}
+              <time class="work-tag text-primary-600">{education.time}</time>
+              {education.description && <p set:html={DOMPurify.sanitize(education.description)}></p>}
             </div>
           ))
         }
@@ -173,7 +173,7 @@ const hasSocialLinks = resume.personalInfo.socialLinks.length > 0;
 
             <div class="col-span-3 flex gap-4">
               <div>
-                <p class="inline-block mb-2 font-serif">{t('Resume-8')}</p>
+                <p class="inline-block mb-2">{t('Resume-8')}</p>
 
                 {resume.links.map((section) => (
                   <ul class="list-inside list-disc">
@@ -215,7 +215,7 @@ const hasSocialLinks = resume.personalInfo.socialLinks.length > 0;
                       return (
                         <li style="width: 100px;">
                           <img width="80" height="80" class="inline" src={qrCodeUrl} alt={`${title} QRCode`} />
-                          <span class="text-xs whitespace-nowrap">{title}</span>
+                          <span class="text-[length:var(--font-size-caption)] whitespace-nowrap">{title}</span>
                         </li>
                       );
                     })
@@ -232,7 +232,7 @@ const hasSocialLinks = resume.personalInfo.socialLinks.length > 0;
                       return (
                         <li style="width: 100px;">
                           <img width="80" height="80" class="inline" src={qrCodeUrl} alt={`${link.name} QRCode`} />
-                          <span class="text-xs whitespace-nowrap">{link.name}</span>
+                          <span class="text-[length:var(--font-size-caption)] whitespace-nowrap">{link.name}</span>
                         </li>
                       );
                     })
@@ -246,9 +246,9 @@ const hasSocialLinks = resume.personalInfo.socialLinks.length > 0;
 
       <hr class="border-b">
 
-      <div class="text-xs flex flex-wrap gap-2 justify-between">
+      <div class="text-[length:var(--font-size-caption)] flex flex-wrap gap-2 justify-between">
         <p>{t('Resume-9')}</p>
-        <p class="font-mono text-right whitespace-nowrap">{t('Resume-10')}{currentTime}</p>
+        <p class="text-right whitespace-nowrap">{t('Resume-10')}{currentTime}</p>
       </div>
     </div>
   </div>
@@ -260,12 +260,12 @@ const hasSocialLinks = resume.personalInfo.socialLinks.length > 0;
   }
 
   .a4 .name {
-    font-size: 1.6rem;
+    font-size: var(--font-size-title);
   }
 
   .a4 .quote {
     padding-left: 3ch;
-    font-size: 1.2rem;
+    font-size: var(--font-size-ui);
   }
 
   .a4 .quote::before {
@@ -281,21 +281,21 @@ const hasSocialLinks = resume.personalInfo.socialLinks.length > 0;
   }
 
   .a4 .category-title {
-    font-size: 1.4rem;
+    font-size: var(--font-size-title);
   }
 
   .a4 .category-item-title {
-    font-size: 1rem;
+    font-size: var(--font-size-ui);
   }
 
   @media (width >= 48rem) {
     .a4 .category-item-title {
-      font-size: 1.4rem;
+      font-size: var(--font-size-title);
     }
   }
 
   .a4 .work-tag {
-    font-size: 0.8rem;
+    font-size: var(--font-size-caption);
   }
 
   .a4 {

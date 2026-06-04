@@ -149,7 +149,7 @@ export function getStaticPaths() {
   <div class="p-4">
     <main class="min-h-screen">
       <Banner>
-        <h1 class="text-[length:var(--font-size-section-title)] font-medium leading-tight">{t('Work-1')}<br />{t('Work-2')}</h1>
+        <h1 class="text-[length:var(--font-size-display)] font-medium leading-tight">{t('Work-1')}<br />{t('Work-2')}</h1>
       </Banner>
 
       <section class="container mx-auto flex flex-col gap-16">
@@ -244,7 +244,7 @@ export function getStaticPaths() {
                     return (
                       <div
                         style="aspect-ratio: 4 / 3;"
-                        class="w-full text-center bg-primary-100 text-primary-600 flex justify-center items-center z-(--z-index-work-thumbnail) relative text-[length:var(--font-size-card-title)] font-bold leading-tight p-8"
+                        class="w-full text-center bg-primary-100 text-primary-600 flex justify-center items-center z-(--z-index-work-thumbnail) relative text-[length:var(--font-size-title)] font-bold leading-tight p-8"
                       >
                         {project.data.title}
                       </div>
@@ -252,12 +252,12 @@ export function getStaticPaths() {
                   })()}
                 </div>
 
-                <h3 class="text-[length:var(--font-size-card-title)] font-medium leading-snug">
+                <h3 class="text-[length:var(--font-size-title)] font-medium leading-snug">
                   {project.data?.link?.url ? <a href={project.data.link.url}>{project.data.title}</a> : <span>{project.data.title}</span>}
                   <time class="opacity-60"> - {project.data.publishDate.getFullYear()}</time>
                 </h3>
 
-                <p class="text-[length:var(--font-size-ui)] leading-relaxed mb-4 font-serif">{project.data.description}</p>
+                <p class="text-[length:var(--font-size-ui)] leading-relaxed mb-4">{project.data.description}</p>
 
                 <div class="flex flex-wrap items-center justify-between gap-4">
                   {project.data.tech && (
