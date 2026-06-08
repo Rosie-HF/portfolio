@@ -57,18 +57,35 @@ export function highlightResumeTerms(text: string): string {
   return text.replace(emphasisPattern, '<strong>$&</strong>');
 }
 
-export function renderResumeAchievements(list: ResumeAchievement): string {
+function hasExplicitEmphasis(list: ResumeAchievement): boolean {
   if (!Array.isArray(list)) {
-    return `<li>${highlightResumeTerms(list)}</li>`;
+    return list.includes('**');
+  }
+
+  return list.some((item) => hasExplicitEmphasis(item));
+}
+
+function renderExplicitEmphasis(text: string): string {
+  return text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+}
+
+function renderResumeText(text: string, shouldAutoHighlight: boolean): string {
+  const withExplicitEmphasis = renderExplicitEmphasis(text);
+  return shouldAutoHighlight ? highlightResumeTerms(withExplicitEmphasis) : withExplicitEmphasis;
+}
+
+export function renderResumeAchievements(list: ResumeAchievement, shouldAutoHighlight = !hasExplicitEmphasis(list)): string {
+  if (!Array.isArray(list)) {
+    return `<li>${renderResumeText(list, shouldAutoHighlight)}</li>`;
   }
 
   return list
     .map((item) => {
       if (Array.isArray(item)) {
-        return `<ul style="padding-left: 1.2em" class="list-disc list-inside">${renderResumeAchievements(item)}</ul>`;
+        return `<ul style="padding-left: 1.2em" class="list-disc list-inside">${renderResumeAchievements(item, shouldAutoHighlight)}</ul>`;
       }
 
-      return `<li>${highlightResumeTerms(item)}</li>`;
+      return `<li>${renderResumeText(item, shouldAutoHighlight)}</li>`;
     })
     .join('');
 }
