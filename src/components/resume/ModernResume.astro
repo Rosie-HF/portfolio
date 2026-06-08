@@ -3,8 +3,6 @@ import type { CollectionEntry } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 import { languageTags, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
 import DOMPurify from 'isomorphic-dompurify';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import QRCode from 'qrcode';
 import profilePhoto from '../../../photo-me.jpg';
 
 interface Props {
@@ -17,6 +15,7 @@ const t = useTranslations(currentLocale);
 const currentTime = new Date()
   .toLocaleDateString(languageTags[currentLocale], { year: 'numeric', month: '2-digit', day: '2-digit' })
   .replace(/\//g, '-');
+const labelSeparator = currentLocale === 'zh-cn' ? '：' : ': ';
 
 type Achievement = string | Achievement[];
 const featuredAchievementPrefixes = [
@@ -66,7 +65,6 @@ function renderAchievements(list: Achievement): string {
 }
 
 const hasLinks = resume.links.some((section) => section.mySite.length > 0);
-const hasSocialLinks = resume.personalInfo.socialLinks.length > 0;
 const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
   ...link,
   displayUrl: link.url.replace(/^mailto:/, '').replace(/^tel:/, '').replace(/^https?:\/\//, '').replace(/\/$/, ''),
@@ -135,6 +133,12 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
                       </li>
                     </ul>
                   </div>
+                  {experience.techs.length > 0 && (
+                    <p class="mb-2 work-tag text-primary-600">
+                      <span class="font-medium text-primary-700">{t('Resume-TechLabel')}{labelSeparator}</span>
+                      {experience.techs.join(' / ')}
+                    </p>
+                  )}
                   {featuredItems.length > 0 && (
                     <div class="rounded-lg border border-primary-100 bg-primary-50/80 p-3">
                       <div class="mb-2 flex items-center gap-2 text-primary-900">
@@ -150,18 +154,10 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
                       </ul>
                     </div>
                   )}
-                  {experience.techs.length > 0 && (
-                    <ul class="mt-2 flex flex-wrap gap-2 text-[length:var(--font-size-caption)]">
-                      {
-                        experience.techs.map((tech) => (
-                          <li class="border border-primary-100 bg-white text-primary-800 rounded-md inline-block p-1 px-2 whitespace-nowrap work-tag">
-                            {tech}
-                          </li>
-                        ))
-                      }
-                    </ul>
+                  {achievements.length > 0 && (
+                    <p class="mt-3 mb-1 work-tag font-semibold text-primary-700">{t('Resume-WorkLabel')}</p>
                   )}
-                  <ul class="mt-2 list-disc list-inside" set:html={DOMPurify.sanitize(renderAchievements(achievements))}></ul>
+                  <ul class="list-disc list-inside" set:html={DOMPurify.sanitize(renderAchievements(achievements))}></ul>
                 </div>
               </div>
             )})
@@ -226,7 +222,7 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
         </div>
       </div>
 
-      {(hasLinks || hasSocialLinks) && (
+      {hasLinks && (
         <>
           <hr class="border-b">
 
@@ -236,74 +232,19 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
               <h2 class="font-medium category-title">{t('Resume-7')}</h2>
             </div>
 
-            <div class="col-span-3 flex gap-4">
-              <div>
-                <p class="inline-block mb-2">{t('Resume-8')}</p>
+            <div class="col-span-3">
+              <p class="inline-block mb-2 work-tag text-primary-600">{t('Resume-8')}</p>
 
-                {resume.links.map((section) => (
-                  <ul class="list-inside list-disc">
-                    {section.mySite.map((site) => (
-                      <li>
-                        <span class="font-medium">{site.title.replace(/\s*[:：]\s*$/, '')}: </span>
-                        <a class="underline" href={site.link}>{site.link}</a>
-                      </li>
-                    ))}
-                  </ul>
-                ))}
-
-                <ul class="list-disc list-inside">
-                  {
-                    resume.personalInfo.socialLinks.map((link) => {
-                      const displayUrl = link.url.replace(/^mailto:/, '').replace(/^tel:/, '');
-                      return (
-                        <li>
-                          {link.name}:
-                          {' '}
-                          <a class="underline" title={link.name} href={link.url}>{displayUrl}</a>
-                        </li>
-                      );
-                    })
-                  }
-                </ul>
-
-                <ul class="flex gap-4 flex-wrap text-center mt-4">
-                  {resume.links.map((section) => (
-                    section.mySite.map(async (site) => {
-                      const qrCodeUrl = await QRCode.toDataURL(site.link, {
-                        width: 80,
-                        margin: 0,
-                        errorCorrectionLevel: 'L',
-                      });
-
-                      const title = site.title.replace(/\s*[:：]\s*$/, '');
-
-                      return (
-                        <li style="width: 100px;">
-                          <img width="80" height="80" class="inline" src={qrCodeUrl} alt={`${title} QRCode`} />
-                          <span class="text-[length:var(--font-size-caption)] whitespace-nowrap">{title}</span>
-                        </li>
-                      );
-                    })
+              {resume.links.map((section) => (
+                <ul class="space-y-1">
+                  {section.mySite.map((site) => (
+                    <li>
+                      <span class="font-medium">{site.title.replace(/\s*[:：]\s*$/, '')}{labelSeparator}</span>
+                      <a class="underline" href={site.link}>{site.link}</a>
+                    </li>
                   ))}
-
-                  {
-                    resume.personalInfo.socialLinks.map(async (link) => {
-                      const qrCodeUrl = await QRCode.toDataURL(link.url, {
-                        width: 80,
-                        margin: 0,
-                        errorCorrectionLevel: 'L',
-                      });
-
-                      return (
-                        <li style="width: 100px;">
-                          <img width="80" height="80" class="inline" src={qrCodeUrl} alt={`${link.name} QRCode`} />
-                          <span class="text-[length:var(--font-size-caption)] whitespace-nowrap">{link.name}</span>
-                        </li>
-                      );
-                    })
-                  }
                 </ul>
-              </div>
+              ))}
             </div>
           </div>
         </>
