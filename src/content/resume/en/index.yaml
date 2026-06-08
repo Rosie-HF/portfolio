@@ -31,7 +31,7 @@ workExperience:
       - Clinical evaluation support
   - title: Research Assistant
     company:
-      name: Xidian University Guangzhou Institute / Guangzhou Brain Modulation Technology Research Co., Ltd.
+      name: Xidian-KeYue Joint Translational Laboratory / Non-invasive Neuromodulation Laboratory
     time: 2023.08 - 2025.06
     achievements:
       - "Representative outcomes: Sleep multi-parameter taVNS protocol | R statistical-analysis platform | R statistics training content | Molecular Psychiatry paper"
@@ -40,7 +40,7 @@ workExperience:
       - Took responsibility for literature retrieval, material organization, and selected manuscript sections, supporting research background, theoretical framing, results discussion, and research-output delivery.
       - Used R to organize experimental data, run statistical analyses, and check results, while contributing to development, maintenance, and updates of the team's statistical-analysis platform.
       - Independently created and delivered statistical-analysis training content, providing the team with R-based statistical methods, data-analysis workflows, and online training support.
-      - Supported a randomized clinical trial on taVNS, with related work accepted by Molecular Psychiatry; also helped guide student research and thesis work.
+      - Supported a randomized clinical trial on taVNS, with related work published in Molecular Psychiatry; also helped guide student research and thesis work.
     techs:
       - Sleep research
       - taVNS
@@ -63,7 +63,7 @@ workExperience:
       - Course TA
 achievements:
   - title: Papers and Conferences
-    subtitle: One first-author paper under review, one first-author manuscript in progress, one co-authored paper published/accepted, and two conference papers.
+    subtitle: One first-author paper under review, one first-author manuscript in progress, one co-authored paper published, and two conference papers.
   - title: Honors and Certifications
     subtitle: Graduate Academic Scholarship at Nanjing Normal University (2020 - 2022), university-level scholarship at Heilongjiang University of Chinese Medicine (2017 - 2019), CET-6, and National Computer Rank Examination Level 2.
 education:

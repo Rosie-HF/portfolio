@@ -181,7 +181,7 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
             <div class="md:col-start-2 md:col-span-3">
               <h3 class="font-medium category-item-title">{education.title}</h3>
               <time class="work-tag text-primary-600">{education.time}</time>
-              {education.description && <p set:html={DOMPurify.sanitize(education.description)}></p>}
+              {education.description && <p class="resume-detail-text text-primary-800" set:html={DOMPurify.sanitize(education.description)}></p>}
             </div>
           ))
         }
@@ -199,7 +199,7 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
             <Fragment>
               {skill.developments && (
                 <div class="w-full">
-                  <ul class="list-disc list-inside">
+                  <ul class="resume-detail-list list-disc list-inside text-primary-800">
                     {skill.developments.map((development) => <li>{development}</li>)}
                   </ul>
                 </div>
@@ -219,7 +219,7 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
               <h2 class="font-medium category-title">{t('Resume-7')}</h2>
             </div>
 
-            <div class="col-span-3">
+            <div class="col-span-3 resume-detail-text text-primary-700">
               {resume.links.map((section) => (
                 <ul class="space-y-1">
                   {section.mySite.map((site) => (
@@ -288,12 +288,16 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
     font-size: var(--font-size-caption);
   }
 
-  .a4 .work-detail-list {
+  .a4 .work-detail-list,
+  .a4 .resume-detail-list,
+  .a4 .resume-detail-text {
     font-size: var(--font-size-caption);
     line-height: 1.65;
   }
 
-  .a4 .work-detail-list strong {
+  .a4 .work-detail-list strong,
+  .a4 .resume-detail-list strong,
+  .a4 .resume-detail-text strong {
     color: var(--color-primary-900);
     font-weight: 700;
   }
