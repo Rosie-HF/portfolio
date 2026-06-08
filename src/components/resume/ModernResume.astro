@@ -213,13 +213,13 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
         <>
           <hr class="border-b">
 
-          <div class="grid md:grid-cols-4 grid-cols-1">
-            <div class="flex items-center gap-2 pb-1 md:pb-0 md:items-start">
+          <div class="grid md:grid-cols-4 grid-cols-1 items-center">
+            <div class="flex items-center gap-2 pb-1 md:pb-0">
               <Icon class="inline-block md:hidden" size={24} name="material-symbols:link-rounded" />
               <h2 class="font-medium category-title">{t('Resume-7')}</h2>
             </div>
 
-            <div class="col-span-3 resume-detail-text text-primary-700">
+            <div class="col-span-3 resume-detail-text self-center text-primary-700">
               {resume.links.map((section) => (
                 <ul class="space-y-1">
                   {section.mySite.map((site) => (
