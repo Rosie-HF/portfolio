@@ -140,36 +140,6 @@ export function getStaticPaths() {
     </section>
 
     <section class="mb-24 container mx-auto px-4">
-      <div class="grid gap-8 border-y border-primary-200 py-10 lg:grid-cols-[0.8fr_1.4fr]">
-        <div>
-          <p class="text-[length:var(--font-size-label)] uppercase tracking-[0.12em] text-primary-500">{t('Home-Outputs-Label')}</p>
-          <h2 class="mt-2 max-w-lg text-[length:var(--font-size-title)] font-semibold leading-tight text-primary-950">{t('Home-Outputs-Title')}</h2>
-          <p class="mt-4 max-w-xl text-[length:var(--font-size-ui)] leading-relaxed text-primary-700">{t('Home-Outputs-Description')}</p>
-        </div>
-        <ul class="divide-y divide-primary-200">
-          {outputLinks.map((output) => (
-            <li>
-              <a
-                class="group grid gap-3 py-5 transition-colors hover:text-primary-950 sm:grid-cols-[1fr_auto] sm:items-start"
-                href={output.url}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span>
-                  <span class="block text-[length:var(--font-size-ui)] font-semibold leading-snug text-primary-950">{output.title}</span>
-                  <span class="mt-2 block text-[length:var(--font-size-ui)] leading-relaxed text-primary-700">{output.description}</span>
-                </span>
-                <span class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary-200 text-primary-600 transition-colors group-hover:border-primary-500 group-hover:bg-primary-50 group-hover:text-primary-900">
-                  <Icon size={18} name="material-symbols:open-in-new-rounded" />
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-
-    <section class="mb-24 container mx-auto px-4">
       <div class="flex flex-wrap items-end justify-between gap-6 mb-8">
         <div>
           <p class="text-[length:var(--font-size-label)] uppercase tracking-[0.12em] text-primary-500">{t('NewestWork-1')}</p>
@@ -197,6 +167,36 @@ export function getStaticPaths() {
           </li>
         ))}
       </ul>
+    </section>
+
+    <section class="mb-24 container mx-auto px-4">
+      <div class="grid gap-8 border-y border-primary-200 py-10 lg:grid-cols-[0.8fr_1.4fr]">
+        <div>
+          <p class="text-[length:var(--font-size-label)] uppercase tracking-[0.12em] text-primary-500">{t('Home-Outputs-Label')}</p>
+          <h2 class="mt-2 max-w-lg text-[length:var(--font-size-title)] font-semibold leading-tight text-primary-950">{t('Home-Outputs-Title')}</h2>
+          <p class="mt-4 max-w-xl text-[length:var(--font-size-ui)] leading-relaxed text-primary-700">{t('Home-Outputs-Description')}</p>
+        </div>
+        <ul class="divide-y divide-primary-200">
+          {outputLinks.map((output) => (
+            <li>
+              <a
+                class="group grid gap-3 py-5 transition-colors hover:text-primary-950 sm:grid-cols-[1fr_auto] sm:items-start"
+                href={output.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span>
+                  <span class="block text-[length:var(--font-size-ui)] font-semibold leading-snug text-primary-950">{output.title}</span>
+                  <span class="mt-2 block text-[length:var(--font-size-ui)] leading-relaxed text-primary-700">{output.description}</span>
+                </span>
+                <span class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary-200 text-primary-600 transition-colors group-hover:border-primary-500 group-hover:bg-primary-50 group-hover:text-primary-900">
+                  <Icon size={18} name="material-symbols:open-in-new-rounded" />
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   </main>
 </Base>
