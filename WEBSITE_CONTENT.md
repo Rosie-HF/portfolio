@@ -84,7 +84,7 @@
 - 角色：医疗健康产品 / 医学内容 / 数字疗法方向
 - Email：fanghe13@outlook.com
 - Phone：17745169759
-- 作品集网站：https://rosie-hf.github.io/portfolio/zh-cn/
+- 个人主页：https://rosie-hf.github.io/portfolio/zh-cn/
 
 ### 工作经历
 

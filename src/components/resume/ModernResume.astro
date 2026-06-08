@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 import { languageTags, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
 import DOMPurify from 'isomorphic-dompurify';
+import { renderResumeAchievements } from '@/utils/resume.ts';
 import profilePhoto from '../../../photo-me.jpg';
 
 interface Props {
@@ -48,20 +49,6 @@ function splitFeaturedAchievement(list: Achievement[]) {
     featuredItems: [],
     achievements: list,
   };
-}
-
-function renderAchievements(list: Achievement): string {
-  if (!Array.isArray(list)) {
-    return `<li>${list}</li>`;
-  }
-  return list
-    .map((item) => {
-      if (Array.isArray(item)) {
-        return `<ul style="padding-left: 1.2em" class="list-disc list-inside">${renderAchievements(item)}</ul>`;
-      }
-      return `<li>${item}</li>`;
-    })
-    .join('');
 }
 
 const hasLinks = resume.links.some((section) => section.mySite.length > 0);
@@ -157,7 +144,7 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
                   {achievements.length > 0 && (
                     <p class="mt-3 mb-1 work-tag font-semibold text-primary-700">{t('Resume-WorkLabel')}</p>
                   )}
-                  <ul class="list-disc list-inside" set:html={DOMPurify.sanitize(renderAchievements(achievements))}></ul>
+                  <ul class="work-detail-list list-disc list-inside" set:html={DOMPurify.sanitize(renderResumeAchievements(achievements))}></ul>
                 </div>
               </div>
             )})
@@ -233,13 +220,10 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
             </div>
 
             <div class="col-span-3">
-              <p class="inline-block mb-2 work-tag text-primary-600">{t('Resume-8')}</p>
-
               {resume.links.map((section) => (
                 <ul class="space-y-1">
                   {section.mySite.map((site) => (
                     <li>
-                      <span class="font-medium">{site.title.replace(/\s*[:：]\s*$/, '')}{labelSeparator}</span>
                       <a class="underline" href={site.link}>{site.link}</a>
                     </li>
                   ))}
@@ -296,12 +280,22 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
 
   @media (width >= 48rem) {
     .a4 .category-item-title {
-      font-size: var(--font-size-title);
+      font-size: calc(var(--font-size-ui) * 1.12);
     }
   }
 
   .a4 .work-tag {
     font-size: var(--font-size-caption);
+  }
+
+  .a4 .work-detail-list {
+    font-size: var(--font-size-caption);
+    line-height: 1.65;
+  }
+
+  .a4 .work-detail-list strong {
+    color: var(--color-primary-900);
+    font-weight: 700;
   }
 
   .a4 {
