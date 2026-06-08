@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 import { languageTags, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
 import DOMPurify from 'isomorphic-dompurify';
+import profilePhoto from '../../../photo-me.jpg';
 
 interface Props {
   resume: CollectionEntry<'resume'>['data'];
@@ -16,6 +17,23 @@ const currentTime = new Date()
   .replace(/\//g, '-');
 
 type Achievement = string | Achievement[];
+const featuredAchievementPrefix = '代表成果：';
+
+function splitFeaturedAchievement(list: Achievement[]) {
+  const [firstAchievement, ...restAchievements] = list;
+  if (typeof firstAchievement === 'string' && firstAchievement.startsWith(featuredAchievementPrefix)) {
+    return {
+      featuredAchievement: firstAchievement.replace(featuredAchievementPrefix, '').trim(),
+      achievements: restAchievements,
+    };
+  }
+
+  return {
+    featuredAchievement: undefined,
+    achievements: list,
+  };
+}
+
 function renderAchievements(list: Achievement): string {
   if (!Array.isArray(list)) {
     return `<li>${list}</li>`;
@@ -29,24 +47,35 @@ function renderAchievements(list: Achievement): string {
     })
     .join('');
 }
+
+const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
+  ...link,
+  displayUrl: link.url.replace(/^mailto:/, '').replace(/^tel:/, '').replace(/^https?:\/\//, '').replace(/\/$/, ''),
+}));
 ---
 
 <div class="container mx-auto flex justify-center px-4 md:px-0">
   <div class="cv-traditional bg-white shadow-xl print:shadow-none text-[length:var(--font-size-ui)] text-gray-900 leading-snug">
-    <header class="text-center border-b-2 border-current pb-4 mb-4">
-      <h1 class="text-[length:var(--font-size-title)] font-bold uppercase tracking-wider mb-2">{resume.personalInfo.name}</h1>
+    <header class="grid grid-cols-[1fr_auto] items-start gap-5 border-b-2 border-current pb-4 mb-4">
+      <div>
+        <h1 class="text-[length:var(--font-size-title)] font-bold uppercase tracking-wider mb-2">{resume.personalInfo.name}</h1>
 
-      <div class="flex flex-wrap justify-center items-center gap-x-3 gap-y-1 text-[length:var(--font-size-caption)]">
-        {resume.personalInfo.socialLinks.map((link, index) => (
-          <div class="flex items-center gap-1">
-            {index > 0 && <span class="text-gray-400 hidden sm:inline mr-2">/</span>}
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-[length:var(--font-size-caption)]">
+        {contactLinks.map((link) => (
+          <a href={link.url} class="flex items-center gap-1 hover:underline text-gray-700" title={link.name}>
             <Icon size={12} name={link.icon} class="text-gray-700 flex-shrink-0" />
-            <a href={link.url} class="hover:underline text-gray-700" title={link.name}>
-              {link.url.replace(/^mailto:/, '').replace(/^tel:/, '').replace(/^https?:\/\//, '').replace(/\/$/, '')}
-            </a>
-          </div>
+            <span>{link.displayUrl}</span>
+          </a>
         ))}
+        </div>
       </div>
+      <img
+        src={profilePhoto.src}
+        width="88"
+        height="88"
+        alt={`${resume.personalInfo.name} 个人照片`}
+        class="h-22 w-22 rounded-md object-cover object-center"
+      />
     </header>
 
     {resume.personalInfo.description && (
@@ -58,7 +87,9 @@ function renderAchievements(list: Achievement): string {
     <section class="mb-5">
       <h2 class="text-[length:var(--font-size-ui)] font-bold uppercase border-b border-current mb-3 pb-1 tracking-widest text-gray-900">{t('Resume-2')}</h2>
       <div class="space-y-4">
-        {resume.workExperience.map((experience) => (
+        {resume.workExperience.map((experience) => {
+          const { featuredAchievement, achievements } = splitFeaturedAchievement(experience.achievements);
+          return (
           <div>
             <div class="flex flex-col gap-2 sm:flex-row sm:justify-between items-start sm:items-baseline mb-1.5">
               <div class="text-[length:var(--font-size-ui)]">
@@ -70,16 +101,21 @@ function renderAchievements(list: Achievement): string {
               </div>
               <span class="text-[length:var(--font-size-caption)] text-gray-600 font-medium whitespace-nowrap mt-0.5 sm:mt-0">{experience.time}</span>
             </div>
-            <ul class="list-disc list-outside ml-5 text-[length:var(--font-size-caption)] space-y-1 text-gray-800" set:html={DOMPurify.sanitize(renderAchievements(experience.achievements))}></ul>
+            {featuredAchievement && (
+              <p class="text-[length:var(--font-size-caption)] text-gray-800">
+                <span class="font-semibold text-gray-900">代表成果：</span>{featuredAchievement}
+              </p>
+            )}
             {experience.techs.length > 0 && (
-              <div class="text-[length:var(--font-size-caption)] text-gray-600 mt-1.5">
+              <div class="text-[length:var(--font-size-caption)] text-gray-600 mt-1">
                 <span class="font-semibold text-gray-700">{t('Resume-TechLabel')}:</span>
                 {' '}
                 {experience.techs.join(', ')}
               </div>
             )}
+            <ul class="list-disc list-outside ml-5 mt-1.5 text-[length:var(--font-size-caption)] space-y-1 text-gray-800" set:html={DOMPurify.sanitize(renderAchievements(achievements))}></ul>
           </div>
-        ))}
+        )})}
       </div>
     </section>
 
