@@ -74,4 +74,29 @@ export function getStaticPaths() {
     /* https://developer.mozilla.org/en-US/docs/Web/CSS/print-color-adjust */
     print-color-adjust: exact;
   }
+
+  @media print {
+    @page {
+      size: A4;
+      margin: 0.75cm;
+    }
+
+    body {
+      background: white !important;
+    }
+
+    body > div,
+    body > div > div,
+    .resume-content,
+    .resume-content > div {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .resume-content {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
 </style>
