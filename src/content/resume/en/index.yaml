@@ -2,7 +2,7 @@
 personalInfo:
   name: HE Fang
   role: Medical Health Product / Medical Content / Digital Therapeutics
-  description: M.S. in Psychology with a background in psychological research, neuroscience-related medical content design, product planning, and data analysis. Familiar with <span class="text-primary-900">ADHD, sleep and circadian rhythms, EEG and multi-parameter physiological signals, biofeedback, and assessment and therapy workflows</span>, with experience translating medical literature, disease mechanisms, physiological metrics, and clinical evidence into product functions, intervention plans, reports, and engineering requirements.
+  description: M.S. in Psychology with a background in psychological research, neuroscience-related medical content design, product planning, and data analysis. Familiar with <span class="text-primary-900">ADHD, sleep and circadian rhythms, EEG and multi-parameter physiological signals, biofeedback, and assessment and therapy workflow design</span>, with experience translating medical literature, disease mechanisms, physiological metrics, and clinical evidence into product functions, training/therapy plans, report content, and R&D requirements.
   socialLinks:
     - name: Email
       icon: simple-icons:microsoftoutlook
@@ -11,74 +11,77 @@ personalInfo:
       icon: material-symbols:call-outline-rounded
       url: tel:17745169759
 workExperience:
-  - title: Medical Content Design / Product Solution Support
+  - title: Medical Product Planning
     company:
-      name: Medical Technology Company
-    time: 2025.07 - 2026.04
+      name: Hangzhou Shenzong Technology Co., Ltd.
+    time: 2025.07 - 2026.05
     achievements:
-      - Worked across a multi-parameter biofeedback system and a physiological-parameter system, covering medical and technical research, product scenario analysis, indication rationale, product planning, requirement breakdown, testing feedback, clinical-evaluation support, and project knowledge-base handoff.
-      - Led the medical product framework for the multi-parameter biofeedback system, defining assessment, training, therapy, and reporting modules, mapping medical mechanisms, physiological metrics, training goals, disease/symptom scenarios, and product functions, and producing software flows, backend requirements, disease labels, plan fields, and report-output rules.
-      - Built a multi-modal metrics and algorithm rule system across EEG, PPG/HRV, EMG, EDA, skin temperature, and accelerometer signals, defining raw values, feature values, core values, thresholds, game-driving values, therapy-effect values, threshold rules, real-time feedback scores, and therapy-outcome scoring.
-      - Led assessment and reporting design, organizing stress assessment, cognitive-behavioral paradigms, SNAP-IV, IVA-CPT workflows, result metrics, and report text, while building four report templates and interpretation rules for EEG, HRV, and other core indicators.
-      - Led feedback-game and psychotherapy content design, including 20 EEG feedback game concepts, 10 detailed game scripts with real-time metric mappings, 8 psychotherapy guidance scripts, 4 breathing-training scripts, 16 therapy/training asset folders, and 225 audio/video assets, while reviewing third-party demos and edited deliverables across iterations.
-      - Supported productization of actigraphy metrics for the physiological-parameter system, organizing sleep-wake, daytime activity, sleep continuity and fragmentation, sleep architecture, cosinor analysis, non-parametric circadian rhythm analysis, and periodogram metrics into calculation logic, reference ranges, medical interpretations, report text, and variable mappings.
-      - Contributed to departmental content and research support, including 17 WeChat articles, ADHD review literature search and drafting, research on eye tracking, cerebral oxygen/fNIRS, PSG, facial-feature-based OSA detection, closed-loop tVNS, and CLAS, plus evidence summaries for biofeedback indications and comparable devices.
+      - "Representative outcomes: 10 detailed EEG feedback game plans | 12 therapy/breathing guidance scripts | 4 categories of music-therapy audio/video assets | 4 standardized report templates | 225 audio/video assets | 17 WeChat articles"
+      - Led medical-product-side planning for a multi-parameter biofeedback system, including indication rationale, product framework, collection-assessment-training/therapy-feedback-reporting module definition, and R&D requirement breakdown, moving the solution into development, testing, and iteration.
+      - Built a multimodal physiological-metric and algorithm-rule system covering EEG, PPG/HRV, EMG, EDA, and skin temperature signals, defining core metrics, thresholds, real-time feedback scores, therapy-effect scores, and interface-display rules.
+      - Led core module work across assessment, feedback games, psychotherapy, and reporting, producing EEG feedback game plans, therapy and breathing-training guidance scripts, content assets, and four standardized report templates for assessment, therapy, treatment-course, and trend reports.
+      - Built the psychotherapy content and asset standard system, organized 16 therapy/training asset directories and 225 audio/video assets, and calibrated third-party game demos, voiceover, and edited deliverables across versions.
+      - Supported productization and medical-content work for actigraphy metrics in a physiological-parameter system, producing sleep/activity/circadian-rhythm metric and report-mapping materials, 17 WeChat articles, ADHD review support, and targeted research on eye tracking, cerebral oxygen/fNIRS, PSG, OSA, closed-loop tVNS, and CLAS.
     techs:
-      - Medical product translation
+      - Medical product planning
       - Multi-parameter biofeedback
       - Metric and algorithm rules
       - Sleep rhythm analysis
       - Reporting system design
       - Clinical evaluation support
-      - Cross-functional collaboration
   - title: Research Assistant
     company:
       name: Xidian University Guangzhou Institute / Guangzhou Brain Modulation Technology Research Co., Ltd.
-    time: 2023.08 - Present
+    time: 2023.08 - 2025.06
     achievements:
-      - Supported ongoing projects in neuromodulation, sleep, psychiatry, psychology, and interoception, contributing to study planning, experiment execution, and day-to-day project coordination.
-      - Helped prepare proposals, ethics applications, and supporting materials while organizing research logic, experimental design, and submission documents.
-      - Took responsibility for literature review, material organization, and selected manuscript drafting to support research framing and interpretation.
-      - Used R to clean data, run statistical analyses, verify results, and contribute to the maintenance and iteration of the team's analysis platform.
-      - Created and delivered training materials in statistical analysis, providing both methodological support and online training for the team.
-      - Assisted in supervising students on research and thesis-related work, helping experiments and milestone delivery move forward.
+      - "Representative outcomes: Sleep multi-parameter taVNS protocol | R statistical-analysis platform | R statistics training content | Molecular Psychiatry paper"
+      - Supported projects related to non-invasive neuromodulation, sleep, cardio-cerebral coupling, interoception, and schizophrenia; led the design of a sleep multi-parameter taVNS experimental protocol, clarifying stimulation parameters, experimental procedures, acquisition metrics, and task schedules.
+      - Contributed to grant proposals, ethics applications, and other research submission materials, helping structure research significance, experimental processes, research logic, and implementation plans.
+      - Took responsibility for literature retrieval, material organization, and selected manuscript sections, supporting research background, theoretical framing, results discussion, and research-output delivery.
+      - Used R to organize experimental data, run statistical analyses, and check results, while contributing to development, maintenance, and updates of the team's statistical-analysis platform.
+      - Independently created and delivered statistical-analysis training content, providing the team with R-based statistical methods, data-analysis workflows, and online training support.
+      - Supported a randomized clinical trial on taVNS, with related work accepted by Molecular Psychiatry; also helped guide student research and thesis work.
     techs:
-      - Research support
+      - Sleep research
+      - taVNS
+      - Cardio-cerebral coupling
       - R statistical analysis
       - Experimental design
-      - Data analysis
-      - Training & instruction
-  - title: Teaching Assistant (R Courses & Workshops)
+      - Scientific writing
+      - Training support
+  - title: Teaching Assistant (R Courses and Workshops)
     company:
       name: Nanjing Normal University / Jiangsu Psychological Society
     time: 2021.06 - 2022.06
     achievements:
-      - Assisted with course preparation, assignment review, student guidance, and post-class Q&A.
-      - Guided participants through coding and psychology data-analysis exercises, supporting the practical use of research methods and statistical tools.
+      - Served as teaching assistant for the graduate course R Language and Its Application in Psychological Research, supporting course-material preparation, assignment review, student guidance, and post-class Q&A.
+      - Served as teaching assistant for the Jiangsu Psychological Society R Language Practical Training Camp, guiding participants through coding, data-analysis exercises, and result interpretation to support hands-on use of psychological statistics.
     techs:
-      - Training & instruction
-      - R statistical analysis
+      - R language teaching
+      - Psychological data analysis
+      - Statistical-method training
+      - Course TA
 achievements:
-  - title: Medical Product Planning and Content Assets
-    subtitle: Led medical product framework, metric rules, assessment paradigms, feedback games, psychotherapy content, and reporting design for a multi-parameter biofeedback system, including 225 therapy/training audio and video assets.
-  - title: Papers and Manuscripts
-    subtitle: One first-author paper under review, one first-author manuscript in progress, one co-authored paper accepted, and one conference paper.
-  - title: Scholarships and Qualifications
-    subtitle: Graduate Academic Scholarship at Nanjing Normal University (2020 - 2022), university scholarship at Heilongjiang University of Chinese Medicine (2017 - 2019), CET-6, and National Computer Rank Examination Level 2.
+  - title: Papers and Conferences
+    subtitle: One first-author paper under review, one first-author manuscript in progress, one co-authored paper published/accepted, and two conference papers.
+  - title: Honors and Certifications
+    subtitle: Graduate Academic Scholarship at Nanjing Normal University (2020 - 2022), university-level scholarship at Heilongjiang University of Chinese Medicine (2017 - 2019), CET-6, and National Computer Rank Examination Level 2.
 education:
-  - title: Nanjing Normal University · M.S. in Psychology
+  - title: Nanjing Normal University · M.S. in Psychology (Academic-track recommended admission)
     time: 2020.09 - 2023.06
-    description: Focused on psychology, neuroscience, and related research methods, with strong foundations in study design and data analysis.
+    description: Research focused on social cognitive neuroscience, autistic traits, and online social-communication bias, with foundations in psychological experimental design, data analysis, and scientific writing.
   - title: Heilongjiang University of Chinese Medicine · B.A. in Applied Psychology
     time: 2016.09 - 2020.06
+    description: Systematic training in psychological theory, psychometrics, experimental psychology, statistics, and counseling-related coursework.
 skills:
   - developments:
-      - "Medical product translation: turn medical literature, disease mechanisms, physiological metrics, and clinical evidence into product functions, intervention plans, reports, and engineering requirements."
-      - "Assessment and therapy design: design assessment, feedback, psychotherapy, and reporting modules, including multi-dimensional workflows, scoring standards, and standardized intervention plans."
-      - "Metrics and rule systems: define composite indicators, thresholds, scoring logic, display rules, input-output parameters, data storage requirements, and audio playback logic."
-      - "Reporting and medical interpretation: translate EEG, HRV, and actigraphy sleep/rhythm metrics into report text, chart structures, variable mappings, and result interpretation."
-      - "Documentation and standardization: produce requirement docs, metric definitions, report templates, disease label specifications, scripts, asset standards, and knowledge-base handoff materials."
-      - "Research and data analysis: apply R for statistical analysis and support literature review, competitive analysis, experimental design, data processing, and interpretation."
-      - "Tools and domain knowledge: R, MATLAB, Python (basic), SQL (basic), EEG, ERPs, fNIRS, EMG, EDA, PPG/HRV, actigraphy, and biofeedback."
+      - "Medical product 0-1: medical evidence -> product framework -> functional rules -> R&D-executable solution"
+      - "Biofeedback design: closed-loop design across collection, assessment, training/therapy, feedback, and reporting"
+      - "Physiological-metric translation: EEG/PPG/EMG/EDA/skin-temperature/actigraphy metrics -> metric definitions, variable mapping, interface-display logic, and medical interpretation"
+      - "Research support: literature retrieval, evidence synthesis, competitive analysis, clinical evaluation, and experimental design"
+      - "Data and AI tools: R statistical analysis, basic MATLAB/Python, and Codex-assisted material organization and document generation"
+      - "Collaboration and documentation: report templates, guidance scripts, asset specifications, project knowledge bases, and cross-team requirement alignment"
 links:
-  - mySite: []
+  - mySite:
+      - title: Online Portfolio
+        link: https://rosie-hf.github.io/portfolio/zh-cn/

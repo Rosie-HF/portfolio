@@ -17,19 +17,34 @@ const currentTime = new Date()
   .replace(/\//g, '-');
 
 type Achievement = string | Achievement[];
-const featuredAchievementPrefix = '代表成果：';
+const featuredAchievementPrefixes = [
+  { prefix: '代表成果：', label: '代表成果' },
+  { prefix: 'Representative outcomes:', label: 'Representative outcomes' },
+  { prefix: 'Representative outcomes：', label: 'Representative outcomes' },
+  { prefix: 'Representative Outcomes:', label: 'Representative outcomes' },
+];
 
 function splitFeaturedAchievement(list: Achievement[]) {
   const [firstAchievement, ...restAchievements] = list;
-  if (typeof firstAchievement === 'string' && firstAchievement.startsWith(featuredAchievementPrefix)) {
-    return {
-      featuredAchievement: firstAchievement.replace(featuredAchievementPrefix, '').trim(),
-      achievements: restAchievements,
-    };
+  if (typeof firstAchievement === 'string') {
+    const matchedPrefix = featuredAchievementPrefixes.find(({ prefix }) => firstAchievement.startsWith(prefix));
+
+    if (matchedPrefix) {
+      return {
+        featuredLabel: matchedPrefix.label,
+        featuredItems: firstAchievement
+          .replace(matchedPrefix.prefix, '')
+          .split(/[｜|]/)
+          .map((item) => item.trim())
+          .filter(Boolean),
+        achievements: restAchievements,
+      };
+    }
   }
 
   return {
-    featuredAchievement: undefined,
+    featuredLabel: undefined,
+    featuredItems: [],
     achievements: list,
   };
 }
@@ -71,10 +86,10 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
       </div>
       <img
         src={profilePhoto.src}
-        width="88"
-        height="88"
-        alt={`${resume.personalInfo.name} 个人照片`}
-        class="h-22 w-22 rounded-md object-cover object-center"
+        width="72"
+        height="96"
+        alt={`${resume.personalInfo.name} profile photo`}
+        class="h-24 w-[4.5rem] rounded-md object-cover object-center"
       />
     </header>
 
@@ -88,7 +103,7 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
       <h2 class="text-[length:var(--font-size-ui)] font-bold uppercase border-b border-current mb-3 pb-1 tracking-widest text-gray-900">{t('Resume-2')}</h2>
       <div class="space-y-4">
         {resume.workExperience.map((experience) => {
-          const { featuredAchievement, achievements } = splitFeaturedAchievement(experience.achievements);
+          const { featuredLabel, featuredItems, achievements } = splitFeaturedAchievement(experience.achievements);
           return (
           <div>
             <div class="flex flex-col gap-2 sm:flex-row sm:justify-between items-start sm:items-baseline mb-1.5">
@@ -101,10 +116,17 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
               </div>
               <span class="text-[length:var(--font-size-caption)] text-gray-600 font-medium whitespace-nowrap mt-0.5 sm:mt-0">{experience.time}</span>
             </div>
-            {featuredAchievement && (
-              <p class="text-[length:var(--font-size-caption)] text-gray-800">
-                <span class="font-semibold text-gray-900">代表成果：</span>{featuredAchievement}
-              </p>
+            {featuredItems.length > 0 && (
+              <div class="text-[length:var(--font-size-caption)] text-gray-800">
+                <span class="font-semibold text-gray-900">{featuredLabel}:</span>
+                <div class="mt-1 flex flex-wrap gap-1.5">
+                  {featuredItems.map((item) => (
+                    <span class="inline-flex rounded-sm border border-gray-300 px-1.5 py-0.5 leading-tight text-gray-800">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
             )}
             {experience.techs.length > 0 && (
               <div class="text-[length:var(--font-size-caption)] text-gray-600 mt-1">

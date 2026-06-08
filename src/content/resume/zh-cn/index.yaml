@@ -11,7 +11,7 @@ personalInfo:
       icon: material-symbols:call-outline-rounded
       url: tel:17745169759
 workExperience:
-  - title: 医学产品转化 / 产品方案设计
+  - title: 医学产品方案设计
     company:
       name: 杭州神踪科技有限公司
     time: 2025.07 - 2026.05
@@ -82,4 +82,6 @@ skills:
       - "数据与 AI 工具：R 统计分析，MATLAB/Python 基础，Codex 辅助资料整理与文档生成"
       - "协作与沉淀：报告模板、指导语脚本、素材规范、项目知识库、跨团队需求对齐"
 links:
-  - mySite: []
+  - mySite:
+      - title: 在线 Portfolio
+        link: https://rosie-hf.github.io/portfolio/zh-cn/

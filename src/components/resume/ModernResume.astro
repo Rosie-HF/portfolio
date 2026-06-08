@@ -19,19 +19,34 @@ const currentTime = new Date()
   .replace(/\//g, '-');
 
 type Achievement = string | Achievement[];
-const featuredAchievementPrefix = '代表成果：';
+const featuredAchievementPrefixes = [
+  { prefix: '代表成果：', label: '代表成果' },
+  { prefix: 'Representative outcomes:', label: 'Representative outcomes' },
+  { prefix: 'Representative outcomes：', label: 'Representative outcomes' },
+  { prefix: 'Representative Outcomes:', label: 'Representative outcomes' },
+];
 
 function splitFeaturedAchievement(list: Achievement[]) {
   const [firstAchievement, ...restAchievements] = list;
-  if (typeof firstAchievement === 'string' && firstAchievement.startsWith(featuredAchievementPrefix)) {
-    return {
-      featuredAchievement: firstAchievement.replace(featuredAchievementPrefix, '').trim(),
-      achievements: restAchievements,
-    };
+  if (typeof firstAchievement === 'string') {
+    const matchedPrefix = featuredAchievementPrefixes.find(({ prefix }) => firstAchievement.startsWith(prefix));
+
+    if (matchedPrefix) {
+      return {
+        featuredLabel: matchedPrefix.label,
+        featuredItems: firstAchievement
+          .replace(matchedPrefix.prefix, '')
+          .split(/[｜|]/)
+          .map((item) => item.trim())
+          .filter(Boolean),
+        achievements: restAchievements,
+      };
+    }
   }
 
   return {
-    featuredAchievement: undefined,
+    featuredLabel: undefined,
+    featuredItems: [],
     achievements: list,
   };
 }
@@ -87,10 +102,10 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
 
         <img
           src={profilePhoto.src}
-          width="112"
-          height="112"
-          alt={`${resume.personalInfo.name} 个人照片`}
-          class="h-28 w-28 rounded-xl object-cover object-center shadow-sm print:shadow-none"
+          width="96"
+          height="128"
+          alt={`${resume.personalInfo.name} profile photo`}
+          class="h-32 w-24 rounded-xl object-cover object-center shadow-sm print:shadow-none"
         />
       </div>
       <hr class="border-b">
@@ -103,7 +118,7 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
         <div class="md:col-start-2 md:col-span-3 space-y-4">
           {
             resume.workExperience.map((experience) => {
-              const { featuredAchievement, achievements } = splitFeaturedAchievement(experience.achievements);
+              const { featuredLabel, featuredItems, achievements } = splitFeaturedAchievement(experience.achievements);
               return (
               <div class="flex flex-col gap-2">
                 <div>
@@ -120,10 +135,20 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
                       </li>
                     </ul>
                   </div>
-                  {featuredAchievement && (
-                    <p class="rounded-md border border-primary-100 bg-primary-50 px-3 py-2 work-tag text-primary-800">
-                      <span class="font-medium">代表成果：</span>{featuredAchievement}
-                    </p>
+                  {featuredItems.length > 0 && (
+                    <div class="rounded-lg border border-primary-100 bg-primary-50/80 p-3">
+                      <div class="mb-2 flex items-center gap-2 text-primary-900">
+                        <Icon size={14} name="material-symbols:workspace-premium-outline-rounded" />
+                        <span class="work-tag font-semibold">{featuredLabel}</span>
+                      </div>
+                      <ul class="grid gap-2 sm:grid-cols-2">
+                        {featuredItems.map((item) => (
+                          <li class="rounded-md border border-primary-100 bg-white/90 px-2.5 py-1.5 work-tag text-primary-800">
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   )}
                   {experience.techs.length > 0 && (
                     <ul class="mt-2 flex flex-wrap gap-2 text-[length:var(--font-size-caption)]">
@@ -219,7 +244,7 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
                   <ul class="list-inside list-disc">
                     {section.mySite.map((site) => (
                       <li>
-                        {site.title}
+                        <span class="font-medium">{site.title.replace(/\s*[:：]\s*$/, '')}: </span>
                         <a class="underline" href={site.link}>{site.link}</a>
                       </li>
                     ))}
