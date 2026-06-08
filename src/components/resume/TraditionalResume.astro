@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { Icon } from 'astro-icon/components';
-import { languageTags, useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
+import { useTranslations, type LanguageKey } from '@/i18n/i18n.ts';
 import DOMPurify from 'isomorphic-dompurify';
 import { renderResumeAchievements } from '@/utils/resume.ts';
 import profilePhoto from '../../../photo-me.jpg';
@@ -13,9 +13,6 @@ interface Props {
 const { resume } = Astro.props;
 const currentLocale = Astro.currentLocale as LanguageKey;
 const t = useTranslations(currentLocale);
-const currentTime = new Date()
-  .toLocaleDateString(languageTags[currentLocale], { year: 'numeric', month: '2-digit', day: '2-digit' })
-  .replace(/\//g, '-');
 const labelSeparator = currentLocale === 'zh-cn' ? '：' : ': ';
 const personalDetails = currentLocale === 'zh-cn'
   ? ['性别：女', '出生年月：1998年 3月']
@@ -191,10 +188,6 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
       </section>
     )}
 
-    <div class="mt-8 text-[length:var(--font-size-caption)] text-gray-400 flex justify-between border-t border-gray-200 pt-3 print:hidden">
-      <p>{t('Resume-9')}</p>
-      <p>{t('Resume-10')} {currentTime}</p>
-    </div>
   </div>
 </div>
 
