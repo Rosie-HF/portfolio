@@ -10,7 +10,7 @@
     "astro": "astro",
     "typecheck": "astro check",
     "prettier": "prettier src/**/*.{js,astro}",
-    "lint": "eslint src/**/*.{js,astro}"
+    "lint": "eslint --no-error-on-unmatched-pattern src/**/*.{js,astro}"
   },
   "overrides": {
     "vite": "^7"
