@@ -33,7 +33,7 @@ function getSocialValue(url: string) {
       </span>
     </h2>
 
-    <div class="rounded-xl border border-primary-200 bg-white/70 px-4 py-3 text-right shadow-sm backdrop-blur lg:min-w-72">
+    <div class="rounded-xl border border-primary-200 bg-white/70 px-4 py-3 text-right shadow-sm backdrop-blur">
       <h3 class="text-[length:var(--font-size-label)] uppercase tracking-[0.12em] text-primary-500">{t('Footer-6')}</h3>
       <ul class="mt-2 flex flex-col items-end gap-1">
         {
@@ -49,7 +49,7 @@ function getSocialValue(url: string) {
       </ul>
     </div>
   </div>
-  <div class="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-primary-200 pt-4 text-[length:var(--font-size-caption)] text-primary-600">
+  <div class="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-primary-200 pt-4 text-[length:var(--font-size-caption)] text-primary-600">
     <p class="opacity-80" set:html={DOMPurify.sanitize(copyrightHtml)} />
     <span>{t('Website-Status')}</span>
   </div>
