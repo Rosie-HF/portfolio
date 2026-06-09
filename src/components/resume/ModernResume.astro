@@ -125,14 +125,14 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
                     </p>
                   )}
                   {featuredItems.length > 0 && (
-                    <div class="rounded-lg border border-primary-100 bg-primary-50/80 p-2.5">
-                      <div class="mb-1.5 flex items-center gap-2 text-primary-900">
+                    <div class="featured-outcome-card rounded-lg border border-primary-100 bg-primary-50/80 p-2.5">
+                      <div class="featured-outcome-heading mb-1.5 flex items-center gap-2 text-primary-900">
                         <Icon size={14} name="material-symbols:workspace-premium-outline-rounded" />
                         <span class="work-tag font-semibold">{featuredLabel}</span>
                       </div>
-                      <ul class="grid gap-1.5 sm:grid-cols-2">
+                      <ul class="featured-outcome-grid grid gap-1.5 sm:grid-cols-2">
                         {featuredItems.map((item) => (
-                          <li class="rounded-md border border-primary-100 bg-white/90 px-2.5 py-1 work-tag text-primary-800">
+                          <li class="featured-outcome-item rounded-md border border-primary-100 bg-white/90 px-2.5 py-1 work-tag text-primary-800">
                             {item}
                           </li>
                         ))}
@@ -146,10 +146,10 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
                           <Icon size={14} name="material-symbols:checklist-rounded" />
                           <span>{t('Resume-WorkLabel')}</span>
                         </p>
-                        <ul class="work-detail-list list-disc list-inside" set:html={DOMPurify.sanitize(renderResumeAchievements(firstWorkDetail))}></ul>
+                        <ul class="work-detail-list list-disc" set:html={DOMPurify.sanitize(renderResumeAchievements(firstWorkDetail))}></ul>
                       </div>
                       {remainingWorkDetails.length > 0 && (
-                        <ul class="work-detail-list list-disc list-inside" set:html={DOMPurify.sanitize(renderResumeAchievements(remainingWorkDetails))}></ul>
+                        <ul class="work-detail-list list-disc" set:html={DOMPurify.sanitize(renderResumeAchievements(remainingWorkDetails))}></ul>
                       )}
                     </div>
                   )}
@@ -207,7 +207,7 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
             <Fragment>
               {skill.developments && (
                 <div class="w-full">
-                  <ul class="resume-detail-list list-disc list-inside text-primary-800">
+                  <ul class="resume-detail-list list-disc text-primary-800">
                     {skill.developments.map((development) => <li>{development}</li>)}
                   </ul>
                 </div>
@@ -297,9 +297,28 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
     line-height: 1.65;
   }
 
+  .a4 .work-detail-list,
+  .a4 .resume-detail-list {
+    padding-left: 1.15em;
+  }
+
+  .a4 .work-detail-list > li,
+  .a4 .resume-detail-list > li {
+    padding-left: 0.25em;
+  }
+
   .a4 .work-detail-heading {
     break-after: avoid;
     page-break-after: avoid;
+  }
+
+  .a4 .work-detail-block {
+    margin-top: 0.375rem;
+  }
+
+  .a4 .work-detail-heading {
+    margin-top: 0;
+    margin-bottom: 0.25rem;
   }
 
   .a4 .work-detail-list {
@@ -357,6 +376,33 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
   }
 
   @media print {
+    .a4 .featured-outcome-card {
+      padding: 0.45rem;
+    }
+
+    .a4 .featured-outcome-heading {
+      margin-bottom: 0.25rem;
+    }
+
+    .a4 .featured-outcome-grid {
+      gap: 0.25rem;
+    }
+
+    .a4 .featured-outcome-item {
+      padding-top: 0.15rem;
+      padding-bottom: 0.15rem;
+    }
+
+    .a4 .work-detail-list,
+    .a4 .resume-detail-list,
+    .a4 .resume-detail-text {
+      line-height: 1.55;
+    }
+
+    .a4 .work-detail-block {
+      margin-top: 0.3rem;
+    }
+
     .a4 {
       overflow: visible;
     }

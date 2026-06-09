@@ -82,7 +82,7 @@ export function renderResumeAchievements(list: ResumeAchievement, shouldAutoHigh
   return list
     .map((item) => {
       if (Array.isArray(item)) {
-        return `<ul style="padding-left: 1.2em" class="list-disc list-inside">${renderResumeAchievements(item, shouldAutoHighlight)}</ul>`;
+        return `<ul style="padding-left: 1.2em" class="list-disc">${renderResumeAchievements(item, shouldAutoHighlight)}</ul>`;
       }
 
       return `<li>${renderResumeText(item, shouldAutoHighlight)}</li>`;
