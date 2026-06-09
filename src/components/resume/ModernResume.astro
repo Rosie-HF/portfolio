@@ -307,6 +307,11 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
     padding-left: 0.25em;
   }
 
+  .a4 .work-detail-list > li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
   .a4 .work-detail-heading {
     break-after: avoid;
     page-break-after: avoid;
@@ -376,33 +381,6 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
   }
 
   @media print {
-    .a4 .featured-outcome-card {
-      padding: 0.45rem;
-    }
-
-    .a4 .featured-outcome-heading {
-      margin-bottom: 0.25rem;
-    }
-
-    .a4 .featured-outcome-grid {
-      gap: 0.25rem;
-    }
-
-    .a4 .featured-outcome-item {
-      padding-top: 0.15rem;
-      padding-bottom: 0.15rem;
-    }
-
-    .a4 .work-detail-list,
-    .a4 .resume-detail-list,
-    .a4 .resume-detail-text {
-      line-height: 1.55;
-    }
-
-    .a4 .work-detail-block {
-      margin-top: 0.3rem;
-    }
-
     .a4 {
       overflow: visible;
     }
