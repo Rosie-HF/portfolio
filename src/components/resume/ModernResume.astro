@@ -124,14 +124,14 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
                     </p>
                   )}
                   {featuredItems.length > 0 && (
-                    <div class="rounded-lg border border-primary-100 bg-primary-50/80 p-3">
-                      <div class="mb-2 flex items-center gap-2 text-primary-900">
+                    <div class="rounded-lg border border-primary-100 bg-primary-50/80 p-2.5">
+                      <div class="mb-1.5 flex items-center gap-2 text-primary-900">
                         <Icon size={14} name="material-symbols:workspace-premium-outline-rounded" />
                         <span class="work-tag font-semibold">{featuredLabel}</span>
                       </div>
-                      <ul class="grid gap-2 sm:grid-cols-2">
+                      <ul class="grid gap-1.5 sm:grid-cols-2">
                         {featuredItems.map((item) => (
-                          <li class="rounded-md border border-primary-100 bg-white/90 px-2.5 py-1.5 work-tag text-primary-800">
+                          <li class="rounded-md border border-primary-100 bg-white/90 px-2.5 py-1 work-tag text-primary-800">
                             {item}
                           </li>
                         ))}
