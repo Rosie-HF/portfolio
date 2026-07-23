@@ -413,13 +413,31 @@ const contactLinks = resume.personalInfo.socialLinks.map((link) => ({
     }
 
     .a4 .resume-header-grid {
-      grid-template-columns: 1.2fr 3fr auto;
-      gap: 0.75rem;
+      grid-template-columns: minmax(10.8rem, 1.5fr) minmax(0, 3fr) auto;
+      gap: 0.62rem;
+    }
+
+    .a4 .resume-header-grid > :first-child {
+      gap: 0.45rem;
+    }
+
+    .a4 .resume-header-grid > :first-child > :first-child {
+      line-height: 1.28;
+    }
+
+    .a4 .resume-header-grid ul {
+      gap: 0.08rem;
+    }
+
+    .a4 .resume-header-grid a {
+      padding-top: 0.04rem;
+      padding-bottom: 0.04rem;
+      line-height: 1.25;
     }
 
     .a4 .resume-header-grid img {
-      width: 4rem;
-      height: 5.3rem;
+      width: 3.75rem;
+      height: 5rem;
     }
 
     .a4 .resume-section-grid {
